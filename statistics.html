@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأدوات الإحصائية - بحثي</title>
+    <meta name="description" content="أدوات إحصائية تفاعلية لمساعدتك في اختيار الاختبار المناسب والتحليل الإحصائي">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-navy: #1a365d;
+            --secondary-gold: #d69e2e;
+            --tertiary-gray: #f7fafc;
+            --text-charcoal: #2d3748;
+            --success-emerald: #38a169;
+            --warning-amber: #d69e2e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-charcoal);
+            background-color: #ffffff;
+        }
+        
+        .arabic-heading {
+            font-family: 'Amiri', serif;
+            font-weight: 700;
+        }
+        
+        .english-text {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(26, 54, 93, 0.98);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-gold) !important;
+        }
+        
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--secondary-gold) !important;
+        }
+        
+        .cta-button {
+            background: var(--secondary-gold);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #b7791f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(214, 158, 46, 0.3);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.7)), url('resources/statistical-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        /* Statistical Wizard */
+        .wizard-section {
+            padding: 5rem 0;
+            background: var(--tertiary-gray);
+        }
+        
+        .wizard-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+        
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            background: #e2e8f0;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, var(--secondary-gold), #b7791f);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .wizard-step {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .wizard-step.active {
+            display: block;
+        }
+        
+        .step-title {
+            color: var(--primary-navy);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .option-card {
+            background: #f8f9fa;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .option-card:hover {
+            border-color: var(--secondary-gold);
+            background: #fef7e0;
+            transform: translateY(-2px);
+        }
+        
+        .option-card.selected {
+            border-color: var(--secondary-gold);
+            background: var(--secondary-gold);
+            color: white;
+        }
+        
+        .option-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-gold);
+        }
+        
+        .option-card.selected .option-icon {
+            color: white;
+        }
+        
+        .wizard-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .wizard-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-prev {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-prev:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+        
+        .btn-next, .btn-finish {
+            background: var(--secondary-gold);
+            color: white;
+        }
+        
+        .btn-next:hover, .btn-finish:hover {
+            background: #b7791f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(214, 158, 46, 0.3);
+        }
+        
+        /* Test Database */
+        .test-database {
+            padding: 5rem 0;
+        }
+        
+        .search-filter-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--secondary-gold);
+        }
+        
+        .search-box i {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+        
+        .filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-chip {
+            background: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .filter-chip:hover {
+            background: #fef7e0;
+            border-color: var(--secondary-gold);
+        }
+        
+        .filter-chip.active {
+            background: var(--secondary-gold);
+            color: white;
+            border-color: var(--secondary-gold);
+        }
+        
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .test-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary-gold);
+        }
+        
+        .test-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .test-icon {
+            font-size: 2rem;
+            color: var(--secondary-gold);
+            margin-left: 1rem;
+        }
+        
+        .test-title {
+            color: var(--primary-navy);
+            margin: 0;
+        }
+        
+        .test-category {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .test-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .test-conditions {
+            margin-bottom: 1.5rem;
+        }
+        
+        .test-conditions h6 {
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .test-conditions ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .test-conditions li {
+            padding: 0.25rem 0;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .test-conditions li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--success-emerald);
+            font-weight: bold;
+        }
+        
+        .test-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-tutorial, .btn-example {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .btn-tutorial {
+            background: var(--primary-navy);
+            color: white;
+        }
+        
+        .btn-tutorial:hover {
+            background: #2d3748;
+            color: white;
+        }
+        
+        .btn-example {
+            background: var(--secondary-gold);
+            color: white;
+        }
+        
+        .btn-example:hover {
+            background: #b7791f;
+            color: white;
+        }
+        
+        /* Tutorial Modal */
+        .tutorial-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .tutorial-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .tutorial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .tutorial-title {
+            color: var(--primary-navy);
+            margin: 0;
+        }
+        
+        .close-tutorial {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
+            padding: 0.5rem;
+        }
+        
+        .tutorial-steps {
+            margin-bottom: 2rem;
+        }
+        
+        .tutorial-step {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-right: 4px solid var(--secondary-gold);
+        }
+        
+        .step-number {
+            background: var(--secondary-gold);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+        
+        /* Results Section */
+        .wizard-results {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .recommendation-card {
+            text-align: center;
+        }
+        
+        .recommended-tests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .recommended-test {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 2px solid var(--secondary-gold);
+        }
+        
+        .recommended-test h4 {
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .recommended-test p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .wizard-navigation {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .wizard-btn {
+                width: 100%;
+            }
+            
+            .tests-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .test-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand arabic-heading" href="index.html">بحثي</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="research-guide.html">الإرشادات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="statistics.html">الإحصاء</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support.html">الدعم</a>
+                    </li>
+                </ul>
+                <a href="support.html" class="cta-button">اطلب استشارة</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="arabic-heading" style="font-size: 3rem; margin-bottom: 1rem;">الأدوات الإحصائية</h1>
+            <p class="lead" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                أدوات تفاعلية لمساعدتك في اختيار الاختبار الإحصائي المناسب وتعلم كيفية تطبيقه
+            </p>
+        </div>
+    </section>
+
+    <!-- Statistical Wizard -->
+    <section class="wizard-section">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="arabic-heading" style="font-size: 2.5rem; color: var(--primary-navy); margin-bottom: 1rem;">
+                    معالج اختيار الاختبار الإحصائي
+                </h2>
+                <p class="lead" style="color: #666; max-width: 700px; margin: 0 auto;">
+                    أجب عن الأسئلة التالية لتحصل على توصية بالاختبار الإحصائي الأنسب لدراستك
+                </p>
+            </div>
+            
+            <div class="wizard-container fade-in" id="statistical-wizard">
+                <div class="progress-container">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 20%">الخطوة 1 من 5</div>
+                    </div>
+                </div>
+                
+                <!-- Step 1: Number of Groups -->
+                <div class="wizard-step active" id="step-1">
+                    <h3 class="step-title arabic-heading">كم عدد المجموعات التي تريد مقارنتها؟</h3>
+                    <div class="options-container">
+                        <div class="option-card" data-value="two-groups">
+                            <div class="option-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h5>مجموعتان</h5>
+                            <p>مثال: مقارنة بين ذكور وإناث، أو مجموعة تجريبية وضابطة</p>
+                        </div>
+                        <div class="option-card" data-value="three-plus-groups">
+                            <div class="option-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h5>ثلاث مجموعات أو أكثر</h5>
+                            <p>مثال: مقارنة بين عدة فئات عمرية أو مستويات تعليمية</p>
+                        </div>
+                        <div class="option-card" data-value="correlation">
+                            <div class="option-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <h5>علاقة بين متغيرات</h5>
+                            <p>مثال: العلاقة بين التحصيل الدراسي والدخل</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2: Data Type -->
+                <div class="wizard-step" id="step-2">
+                    <h3 class="step-title arabic-heading">ما نوع البيانات لديك؟</h3>
+                    <div class="options-container">
+                        <div class="option-card" data-value="continuous">
+                            <div class="option-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h5>بيانات مستمرة</h5>
+                            <p>أرقام قابلة للقياس مثل العمر، الوزن، الدرجات</p>
+                        </div>
+                        <div class="option-card" data-value="categorical">
+                            <div class="option-icon">
+                                <i class="fas fa-tags"></i>
+                            </div>
+                            <h5>بيانات تصنيفية</h5>
+                            <p>فئات مثل النوع الاجتماعي، التعليم، الحالة الاجتماعية</p>
+                        </div>
+                        <div class="option-card" data-value="ordinal">
+                            <div class="option-icon">
+                                <i class="fas fa-sort-amount-up"></i>
+                            </div>
+                            <h5>بيانات ترتيبية</h5>
+                            <p>ترتيب مثل مستوى الرضا، درجة الاتفاق</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Sample Size -->
+                <div class="wizard-step" id="step-3">
+                    <h3 class="step-title arabic-heading">ما حجم العينة لديك؟</h3>
+                    <div class="options-container">
+                        <div class="option-card" data-value="small">
+                            <div class="option-icon">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <h5>صغير (أقل من 30)</h5>
+                            <p>عينة صغيرة تتطلب اختبارات غير معلمية</p>
+                        </div>
+                        <div class="option-card" data-value="medium">
+                            <div class="option-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h5>متوسط (30-100)</h5>
+                            <p>حجم عينة متوسط مناسب لمعظم الاختبارات</p>
+                        </div>
+                        <div class="option-card" data-value="large">
+                            <div class="option-icon">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <h5>كبير (أكثر من 100)</h5>
+                            <p>عينة كبيرة تسمح باستخدام الاختبارات المعقدة</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 4: Distribution -->
+                <div class="wizard-step" id="step-4">
+                    <h3 class="step-title arabic-heading">هل بياناتك تتبع التوزيع الطبيعي؟</h3>
+                    <div class="options-container">
+                        <div class="option-card" data-value="normal">
+                            <div class="option-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <h5>نعم، توزيع طبيعي</h5>
+                            <p>البيانات موزعة توزيعاً طبيعياً (جرس الشكل)</p>
+                        </div>
+                        <div class="option-card" data-value="non-normal">
+                            <div class="option-icon">
+                                <i class="fas fa-wave-square"></i>
+                            </div>
+                            <h5>لا، غير طبيعي</h5>
+                              <p>البيانات مرتبة أو غير متماثلة</p>
+                        </div>
+                        <div class="option-card" data-value="unknown">
+                            <div class="option-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h5>غير متأكد</h5>
+                            <p>سنقترح اختبارات لا تتطلب افتراضات صارمة</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 5: Research Question -->
+                <div class="wizard-step" id="step-5">
+                    <h3 class="step-title arabic-heading">ما هو هدفك البحثي الرئيسي؟</h3>
+                    <div class="options-container">
+                        <div class="option-card" data-value="comparison">
+                            <div class="option-icon">
+                                <i class="fas fa-not-equal"></i>
+                            </div>
+                            <h5>مقارنة بين مجموعات</h5>
+                            <p>هل توجد فروقات بين مجموعات مختلفة؟</p>
+                        </div>
+                        <div class="option-card" data-value="association">
+                            <div class="option-icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                            <h5>علاقة بين متغيرات</h5>
+                            <p>هل توجد علاقة بين متغيرين أو أكثر؟</p>
+                        </div>
+                        <div class="option-card" data-value="prediction">
+                            <div class="option-icon">
+                                <i class="fas fa-crystal-ball"></i>
+                            </div>
+                            <h5>التنبؤ والتفسير</h5>
+                            <p>يمكنني التنبؤ بقيمة متغير من متغيرات أخرى؟</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wizard-navigation">
+                    <button type="button" class="wizard-btn btn-prev" id="prev-btn" style="display: none;">
+                        <i class="fas fa-arrow-right"></i> السابق
+                    </button>
+                    <div></div>
+                    <button type="button" class="wizard-btn btn-next" id="next-btn">
+                        التالي <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button type="button" class="wizard-btn btn-finish" id="finish-btn" style="display: none;">
+                        <i class="fas fa-check"></i> إنهاء
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="wizard-results" id="wizard-results">
+                <div class="recommendation-card">
+                    <h3 class="arabic-heading" style="color: var(--primary-navy); margin-bottom: 2rem;">
+                        الاختبارات الإحصائية المقترحة
+                    </h3>
+                    <div class="recommended-tests" id="recommended-tests">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Database -->
+    <section class="test-database">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="arabic-heading" style="font-size: 2.5rem; color: var(--primary-navy); margin-bottom: 1rem;">
+                    قاعدة بيانات الاختبارات الإحصائية
+                </h2>
+                <p class="lead" style="color: #666; max-width: 700px; margin: 0 auto;">
+                    استكشف مجموعتنا الشاملة من الاختبارات الإحصائية مع دليل التطبيق
+                </p>
+            </div>
+            
+            <div class="search-filter-container fade-in">
+                <div class="search-box">
+                    <input type="text" id="test-search" placeholder="ابحث عن اختبار إحصائي...">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <div class="filter-chips">
+                    <div class="filter-chip active" data-filter="all">الكل</div>
+                    <div class="filter-chip" data-filter="parametric">معلمي</div>
+                    <div class="filter-chip" data-filter="non-parametric">غير معلمي</div>
+                    <div class="filter-chip" data-filter="correlation">ارتباط</div>
+                    <div class="filter-chip" data-filter="regression">انحدار</div>
+                    <div class="filter-chip" data-filter="comparison">مقارنة</div>
+                </div>
+            </div>
+            
+            <div class="tests-grid" id="tests-grid">
+                <!-- Tests will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Modal -->
+    <div class="tutorial-modal" id="tutorial-modal">
+        <div class="tutorial-content">
+            <div class="tutorial-header">
+                <h3 class="tutorial-title arabic-heading" id="tutorial-title">دليل الاختبار الإحصائي</h3>
+                <button class="close-tutorial" onclick="closeTutorial()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="tutorial-steps" id="tutorial-steps">
+                <!-- Tutorial content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: var(--text-charcoal); color: white; padding: 3rem 0 2rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">روابط سريعة</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="index.html" style="color: #ccc; text-decoration: none;">الرئيسية</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="research-guide.html" style="color: #ccc; text-decoration: none;">الإرشادات</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="statistics.html" style="color: #ccc; text-decoration: none;">الإحصاء</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="support.html" style="color: #ccc; text-decoration: none;">الدعم</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">معلومات التواصل</h5>
+                    <p style="color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-user"></i> محمود محمد عبدالرحيم</p>
+                    <p style="color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-phone"></i> +96894764758</p>
+                    <p style="color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-envelope"></i> matheg2010@gmail.com</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">خدماتنا</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="statistics.html" style="color: #ccc; text-decoration: none;">التحليل الإحصائي</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="research-guide.html" style="color: #ccc; text-decoration: none;">كتابة البحوث</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="support.html" style="color: #ccc; text-decoration: none;">الاستشارات</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="research-guide.html" style="color: #ccc; text-decoration: none;">المصادر والمراجع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">تابعنا</h5>
+                    <div class="social-links">
+                        <a href="#" style="color: #ccc; margin-left: 1rem; text-decoration: none;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" style="color: #ccc; margin-left: 1rem; text-decoration: none;">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" style="color: #ccc; margin-left: 1rem; text-decoration: none;">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center pt-3 border-top" style="border-color: #444;">
+                <p style="color: #999; margin: 0;">&copy; 2025 - جميع الحقوق محفوظة لمحمود محمد عبدالرحيم</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Statistics Page JavaScript -->
+    <script>
+        // Statistical tests database
+        const statisticalTests = [
+            {
+                id: 't-test',
+                name: 'اختبار T (T-Test)',
+                category: 'parametric',
+                type: 'comparison',
+                description: 'يستخدم لاختبار الفرق بين متوسطي مجموعتين مستقلتين أو متصلتين',
+                conditions: [
+                    'البيانات مستمرة',
+                    'التوزيع الطبيعي للبيانات',
+                    'تجانب التباين (للمجموعات المستقلة)'
+                ],
+                spssSteps: [
+                    'اختر Analyze → Compare Means → Independent-Samples T Test',
+                    'حدد المتغير التابع في Test Variable(s)',
+                    'حدد متغير التجميع في Grouping Variable',
+                    'اضغط على Define Groups وحدد قيم المجموعات',
+                    'اضغط OK للحصول على النتائج'
+                ],
+                excelSteps: [
+                    'استخدم الدالة T.TEST(array1, array2, tails, type)',
+                    'Array1: نطاق البيانات للمجموعة الأولى',
+                    'Array2: نطاق البيانات للمجموعة الثانية',
+                    'Tails: 1 للاختبار أحادي الجانب، 2 للثنائي',
+                    'Type: 1 لمجموعات مترابطة، 2 لمجموعات مستقلة'
+                ],
+                icon: 'fas fa-not-equal'
+            },
+            {
+                id: 'anova',
+                name: 'تحليل التباين (ANOVA)',
+                category: 'parametric',
+                type: 'comparison',
+                description: 'يختبر الفرق بين متوسطات ثلاث مجموعات أو أكثر',
+                conditions: [
+                    'البيانات مستمرة',
+                    'التوزيع الطبيعي للبيانات',
+                    'تجانب التباين بين المجموعات',
+                    'استقلال المشاهدات'
+                ],
+                spssSteps: [
+                    'اختر Analyze → Compare Means → One-Way ANOVA',
+                    'حدد المتغير التابع في Dependent List',
+                    'حدد متغير التجميع في Factor',
+                    'اضغط على Post Hoc لاختبارات المقارنات المتعددة',
+                    'اختر طريقة الاختبار (مثل Tukey) واضغط Continue ثم OK'
+                ],
+                excelSteps: [
+                    'استخدم أداة Data Analysis → ANOVA: Single Factor',
+                    'حدد نطاق البيانات المدخلة',
+                    'حدد Alpha (عادة 0.05)',
+                    'اختر موقع النتائج واضغط OK'
+                ],
+                icon: 'fas fa-layer-group'
+            },
+            {
+                id: 'chi-square',
+                name: 'اختبار مربع كاي (Chi-Square)',
+                category: 'non-parametric',
+                type: 'association',
+                description: 'يختبر العلاقة بين متغيرين تصنيفيين أو تطابق البيانات مع توزيع نظري',
+                conditions: [
+                    'البيانات تصنيفية',
+                    'الاستقلال المطلق',
+                    'الأعداد المتوقعة > 5 في كل خلية'
+                ],
+                spssSteps: [
+                    'اختر Analyze → Descriptive Statistics → Crosstabs',
+                    'حدد متغير الصفوف والأعمدة',
+                    'اضغط على Statistics واختر Chi-square',
+                    'اضغط على Cells واختر Expected وPercentages',
+                    'اضغط OK للحصول على النتائج'
+                ],
+                excelSteps: [
+                    'أنشئ جدول التكرارات المتقاطعة',
+                    'استخدم الدالة CHISQ.TEST(actual_range, expected_range)',
+                    'للحصول على القيمة الحرجة: CHISQ.INV.RT(probability, df)',
+                    'لحساب درجات الحرية: (rows-1) * (columns-1)'
+                ],
+                icon: 'fas fa-th'
+            },
+            {
+                id: 'correlation',
+                name: 'معامل الارتباط (Correlation)',
+                category: 'parametric',
+                type: 'association',
+                description: 'يقيس قوة واتجاه العلاقة الخطية بين متغيرين مستمرين',
+                conditions: [
+                    'المتغيران مستمران',
+                    'العلاقة الخطية',
+                    'التوزيع الطبيعي للبيانات'
+                ],
+                spssSteps: [
+                    'اختر Analyze → Correlate → Bivariate',
+                    'حدد المتغيرات التي تريد حساب الارتباط بينها',
+                    'اختر نوع معامل الارتباط (Pearson)',
+                    'حدد اختبار المعنوية (Two-tailed)',
+                    'اضغط OK للحصول على النتائج'
+                ],
+                excelSteps: [
+                    'استخدم الدالة CORREL(array1, array2) لحساب معامل الارتباط',
+                    'لحساب معامل الارتباط مع القيمة الاحتمالية: PEARSON',
+                    'لاختبار المعنوية: T-TEST',
+                    'لإنشاء رسم بياني: إدراج → مخطط تفرق'
+                ],
+                icon: 'fas fa-project-diagram'
+            },
+            {
+                id: 'regression',
+                name: 'تحليل الانحدار (Regression)',
+                category: 'parametric',
+                type: 'prediction',
+                description: 'يستخدم للتنبؤ بقيمة متغير تابع من متغيرات مستقلة',
+                conditions: [
+                    'البيانات مستمرة',
+                    'العلاقة الخطية',
+                    'استقلال المشاهدات',
+                    'تجانب التباين'
+                ],
+                spssSteps: [
+                    'اختر Analyze → Regression → Linear',
+                    'حدد المتغير التابع في Dependent',
+                    'حدد المتغيرات المستقلة في Independent(s)',
+                    'اختر الأساليب الإحصائية (Statistics)',
+                    'اضغط OK للحصول على النتائج'
+                ],
+                excelSteps: [
+                    'استخدم أداة Data Analysis → Regression',
+                    'حدد نطاق Y (المتغير التابع)',
+                    'حدد نطاق X (المتغيرات المستقلة)',
+                    'اختر خيارات الإخراج',
+                    'اضغط OK للحصول على النتائج'
+                ],
+                icon: 'fas fa-chart-line'
+            },
+            {
+                id: 'mann-whitney',
+                name: 'اختبار مان-ويتني (Mann-Whitney U)',
+                category: 'non-parametric',
+                type: 'comparison',
+                description: 'بديل غير معلمي لاختبار T لمقارنة مجموعتين مستقلتين',
+                conditions: [
+                    'البيانات ترتيبية أو مستمرة غير طبيعية',
+                    'مجموعتان مستقلتان',
+                    'عينة صغيرة أو غير طبيعية التوزيع'
+                ],
+                spssSteps: [
+                    'اختر Analyze → Nonparametric Tests → Independent Samples',
+                    'اختر متغير الاختبار في Test Variable List',
+                    'حدد متغير التجميع في Grouping Variable',
+                    'اضغط على Define Groups وحدد القيم',
+                    'اضغط OK للحصول على النتائج'
+                ],
+                excelSteps: [
+                    'رتب البيانات لكل مجموعة بشكل منفصل',
+                    'احسب الرتب المشتركة',
+                    'استخدم صيغة خاصة لحساب U',
+                    'قارن مع القيمة الحرجة من الجداول',
+                    'أو استخدم أدوات إحصائية متخصصة'
+                ],
+                icon: 'fas fa-random'
+            }
+        ];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initStatisticalWizard();
+            initTestDatabase();
+            initScrollAnimations();
+        });
+
+        function initStatisticalWizard() {
+            const wizard = {
+                currentStep: 1,
+                totalSteps: 5,
+                answers: {},
+                
+                init() {
+                    this.setupEventListeners();
+                    this.showStep(1);
+                },
+                
+                setupEventListeners() {
+                    // Option card selection
+                    document.addEventListener('click', (e) => {
+                        if (e.target.closest('.option-card')) {
+                            this.selectOption(e.target.closest('.option-card'));
+                        }
+                    });
+                    
+                    // Navigation buttons
+                    document.getElementById('next-btn').addEventListener('click', () => this.nextStep());
+                    document.getElementById('prev-btn').addEventListener('click', () => this.prevStep());
+                    document.getElementById('finish-btn').addEventListener('click', () => this.finish());
+                },
+                
+                selectOption(card) {
+                    // Remove selection from siblings
+                    const siblings = card.parentNode.querySelectorAll('.option-card');
+                    siblings.forEach(sibling => sibling.classList.remove('selected'));
+                    
+                    // Select current card
+                    card.classList.add('selected');
+                    
+                    // Store answer
+                    const stepId = card.closest('.wizard-step').id;
+                    const stepNumber = stepId.split('-')[1];
+                    this.answers[`step${stepNumber}`] = card.dataset.value;
+                },
+                
+                showStep(step) {
+                    // Hide all steps
+                    document.querySelectorAll('.wizard-step').forEach(stepEl => {
+                        stepEl.classList.remove('active');
+                    });
+                    
+                    // Show current step
+                    document.getElementById(`step-${step}`).classList.add('active');
+                    
+                    // Update progress
+                    const progress = (step / this.totalSteps) * 100;
+                    const progressBar = document.querySelector('.progress-bar');
+                    progressBar.style.width = `${progress}%`;
+                    progressBar.textContent = `الخطوة ${step} من ${this.totalSteps}`;
+                    
+                    // Update navigation
+                    const prevBtn = document.getElementById('prev-btn');
+                    const nextBtn = document.getElementById('next-btn');
+                    const finishBtn = document.getElementById('finish-btn');
+                    
+                    prevBtn.style.display = step > 1 ? 'block' : 'none';
+                    
+                    if (step === this.totalSteps) {
+                        nextBtn.style.display = 'none';
+                        finishBtn.style.display = 'block';
+                    } else {
+                        nextBtn.style.display = 'block';
+                        finishBtn.style.display = 'none';
+                    }
+                    
+                    this.currentStep = step;
+                },
+                
+                nextStep() {
+                    if (this.currentStep < this.totalSteps) {
+                        this.showStep(this.currentStep + 1);
+                    }
+                },
+                
+                prevStep() {
+                    if (this.currentStep > 1) {
+                        this.showStep(this.currentStep - 1);
+                    }
+                },
+                
+                finish() {
+                    const recommendations = this.generateRecommendations();
+                    this.showResults(recommendations);
+                },
+                
+                generateRecommendations() {
+                    const answers = this.answers;
+                    const recommendations = [];
+                    
+                    // Simple recommendation logic based on answers
+                    if (answers.step1 === 'two-groups' && answers.step2 === 'continuous') {
+                        if (answers.step4 === 'normal') {
+                            recommendations.push(statisticalTests.find(test => test.id === 't-test'));
+                        } else {
+                            recommendations.push(statisticalTests.find(test => test.id === 'mann-whitney'));
+                        }
+                    }
+                    
+                    if (answers.step1 === 'three-plus-groups') {
+                        recommendations.push(statisticalTests.find(test => test.id === 'anova'));
+                    }
+                    
+                    if (answers.step1 === 'correlation' || answers.step5 === 'association') {
+                        recommendations.push(statisticalTests.find(test => test.id === 'correlation'));
+                        recommendations.push(statisticalTests.find(test => test.id === 'regression'));
+                    }
+                    
+                    if (answers.step2 === 'categorical') {
+                        recommendations.push(statisticalTests.find(test => test.id === 'chi-square'));
+                    }
+                    
+                    // Default recommendations if no specific match
+                    if (recommendations.length === 0) {
+                        recommendations.push(
+                            statisticalTests.find(test => test.id === 't-test'),
+                            statisticalTests.find(test => test.id === 'anova'),
+                            statisticalTests.find(test => test.id === 'correlation')
+                        );
+                    }
+                    
+                    return recommendations.filter(Boolean);
+                },
+                
+                showResults(recommendations) {
+                    const resultsContainer = document.getElementById('recommended-tests');
+                    resultsContainer.innerHTML = '';
+                    
+                    recommendations.forEach(test => {
+                        const testElement = document.createElement('div');
+                        testElement.className = 'recommended-test';
+                        testElement.innerHTML = `
+                            <h4>${test.name}</h4>
+                            <p>${test.description}</p>
+                            <div class="test-actions">
+                                <button class="btn-tutorial" onclick="showTutorial('${test.id}')">
+                                    دليل التطبيق
+                                </button>
+                                <button class="btn-example" onclick="showExample('${test.id}')">
+                                    مثال تطبيقي
+                                </button>
+                            </div>
+                        `;
+                        resultsContainer.appendChild(testElement);
+                    });
+                    
+                    document.getElementById('wizard-results').style.display = 'block';
+                    document.getElementById('wizard-results').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                }
+            };
+            
+            wizard.init();
+        }
+
+        function initTestDatabase() {
+            const testGrid = document.getElementById('tests-grid');
+            const searchInput = document.getElementById('test-search');
+            const filterChips = document.querySelectorAll('.filter-chip');
+            
+            let filteredTests = [...statisticalTests];
+            
+            // Render all tests initially
+            renderTests(statisticalTests);
+            
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                filteredTests = statisticalTests.filter(test => 
+                    test.name.toLowerCase().includes(searchTerm) ||
+                    test.description.toLowerCase().includes(searchTerm)
+                );
+                renderTests(filteredTests);
+            });
+            
+            // Filter functionality
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    // Update active chip
+                    filterChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    
+                    const filter = chip.dataset.filter;
+                    if (filter === 'all') {
+                        filteredTests = [...statisticalTests];
+                    } else {
+                        filteredTests = statisticalTests.filter(test => 
+                            test.category === filter || test.type === filter
+                        );
+                    }
+                    renderTests(filteredTests);
+                });
+            });
+            
+            function renderTests(tests) {
+                testGrid.innerHTML = '';
+                
+                tests.forEach(test => {
+                    const testCard = document.createElement('div');
+                    testCard.className = 'test-card fade-in';
+                    testCard.innerHTML = `
+                        <div class="test-header">
+                            <div class="test-icon">
+                                <i class="${test.icon}"></i>
+                            </div>
+                            <h4 class="test-title arabic-heading">${test.name}</h4>
+                        </div>
+                        <div class="test-category">${test.category === 'parametric' ? 'معلمي' : 'غير معلمي'}</div>
+                        <p class="test-description">${test.description}</p>
+                        <div class="test-conditions">
+                            <h6>شروط الاستخدام:</h6>
+                            <ul>
+                                ${test.conditions.map(condition => `<li>${condition}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="test-actions">
+                            <button class="btn-tutorial" onclick="showTutorial('${test.id}')">
+                                دليل SPSS/Excel
+                            </button>
+                            <button class="btn-example" onclick="showExample('${test.id}')">
+                                مثال تطبيقي
+                            </button>
+                        </div>
+                    `;
+                    testGrid.appendChild(testCard);
+                });
+                
+                // Trigger animation
+                setTimeout(() => {
+                    document.querySelectorAll('.test-card').forEach(card => {
+                        card.classList.add('visible');
+                    });
+                }, 100);
+            }
+        }
+
+        function showTutorial(testId) {
+            const test = statisticalTests.find(t => t.id === testId);
+            if (!test) return;
+            
+            const modal = document.getElementById('tutorial-modal');
+            const title = document.getElementById('tutorial-title');
+            const steps = document.getElementById('tutorial-steps');
+            
+            title.textContent = `دليل تطبيق ${test.name}`;
+            
+            steps.innerHTML = `
+                <div class="tutorial-step">
+                    <h5><span class="step-number">1</span>تطبيق في SPSS:</h5>
+                    <ol>
+                        ${test.spssSteps.map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                </div>
+                <div class="tutorial-step">
+                    <h5><span class="step-number">2</span>تطبيق في Excel:</h5>
+                    <ol>
+                        ${test.excelSteps.map(step => `<li>${step}</li>`).join('')}
+                    </ol>
+                </div>
+                <div class="tutorial-step">
+                    <h5><span class="step-number">3</span>تفسير النتائج:</h5>
+                    <p>إذا كانت القيمة الاحتمالية (p-value) أقل من 0.05، فالفرق أو العلاقة ذات دلالة إحصائية.</p>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        function showExample(testId) {
+            const examples = {
+                't-test': {
+                    title: 'مثال اختبار T',
+                    description: 'دراسة تريد مقارنة التحصيل الدراسي بين طلاب الذكور والإناث',
+                    data: 'مجموعة بيانات تحتوي على جنس الطالب ودرجته',
+                    interpretation: 'إذا كانت p-value < 0.05، فهناك فرق ذو دلالة بين الذكور والإناث'
+                },
+                'anova': {
+                    title: 'مثال تحليل التباين',
+                    description: 'دراسة تريد مقارنة التحصيل بين ثلاث طرق تدريس مختلفة',
+                    data: 'مجموعة بيانات تحتوي على طريقة التدريس ودرجة التحصيل',
+                    interpretation: 'إذا كانت p-value < 0.05، فهناك فرق بين طرق التدريس المختلفة'
+                },
+                'correlation': {
+                    title: 'مثال معامل الارتباط',
+                    description: 'دراسة العلاقة بين عدد سنوات الخبرة والأداء الوظيفي',
+                    data: 'مجموعة بيانات تحتوي على سنوات الخبرة والأداء الوظيفي',
+                    interpretation: 'معامل ارتباط موجب وقيمة p < 0.05 يدل على علاقة موجبة ذات دلالة'
+                }
+            };
+            
+            const example = examples[testId];
+            if (!example) {
+                alert('المثال قيد التطوير');
+                return;
+            }
+            
+            const modal = document.getElementById('tutorial-modal');
+            const title = document.getElementById('tutorial-title');
+            const steps = document.getElementById('tutorial-steps');
+            
+            title.textContent = example.title;
+            
+            steps.innerHTML = `
+                <div class="tutorial-step">
+                    <h5>وصف الدراسة:</h5>
+                    <p>${example.description}</p>
+                </div>
+                <div class="tutorial-step">
+                    <h5>البيانات المطلوبة:</h5>
+                    <p>${example.data}</p>
+                </div>
+                <div class="tutorial-step">
+                    <h5>تفسير النتائج:</h5>
+                    <p>${example.interpretation}</p>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeTutorial() {
+            document.getElementById('tutorial-modal').style.display = 'none';
+        }
+
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('tutorial-modal');
+            if (e.target === modal) {
+                closeTutorial();
+            }
+        });
+    </script>
+</body>
+</html>

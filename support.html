@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدعم والاستشارات - بحثي</title>
+    <meta name="description" content="اطلب استشارة متخصصة في البحث العلمي والتحليل الإحصائي مع محمود محمد عبدالرحيم">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-navy: #1a365d;
+            --secondary-gold: #d69e2e;
+            --tertiary-gray: #f7fafc;
+            --text-charcoal: #2d3748;
+            --success-emerald: #38a169;
+            --warning-amber: #d69e2e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-charcoal);
+            background-color: #ffffff;
+        }
+        
+        .arabic-heading {
+            font-family: 'Amiri', serif;
+            font-weight: 700;
+        }
+        
+        .english-text {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(26, 54, 93, 0.98);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-gold) !important;
+        }
+        
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--secondary-gold) !important;
+        }
+        
+        .cta-button {
+            background: var(--secondary-gold);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #b7791f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(214, 158, 46, 0.3);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.7)), url('resources/consultation-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        /* Contact Form Section */
+        .contact-section {
+            padding: 5rem 0;
+            background: var(--tertiary-gray);
+        }
+        
+        .contact-container {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .form-title {
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .form-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .form-control {
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-gold);
+            box-shadow: 0 0 0 3px rgba(214, 158, 46, 0.1);
+        }
+        
+        .form-select {
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-select:focus {
+            outline: none;
+            border-color: var(--secondary-gold);
+            box-shadow: 0 0 0 3px rgba(214, 158, 46, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .file-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: #f8f9fa;
+            border: 2px dashed #e2e8f0;
+            border-radius: 10px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .file-label:hover {
+            border-color: var(--secondary-gold);
+            background: #fef7e0;
+        }
+        
+        .file-icon {
+            font-size: 2rem;
+            color: var(--secondary-gold);
+        }
+        
+        .file-info {
+            color: #666;
+        }
+        
+        .submit-btn {
+            background: var(--secondary-gold);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0 auto;
+        }
+        
+        .submit-btn:hover {
+            background: #b7791f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(214, 158, 46, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            padding: 5rem 0;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            color: var(--secondary-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-title {
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-details {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .contact-details a {
+            color: var(--secondary-gold);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 5rem 0;
+            background: var(--tertiary-gray);
+        }
+        
+        .service-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-title {
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .service-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-price {
+            background: var(--secondary-gold);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            padding: 1.5rem;
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary-navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 200px;
+        }
+        
+        .faq-answer p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Success/Error Messages */
+        .alert {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1000;
+            min-width: 300px;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 2rem;
+            }
+            
+            .submit-btn {
+                width: 100%;
+            }
+            
+            .service-item {
+                margin-bottom: 1.5rem;
+            }
+            
+            .contact-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand arabic-heading" href="index.html">بحثي</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="research-guide.html">الإرشادات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="statistics.html">الإحصاء</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="support.html">الدعم</a>
+                    </li>
+                </ul>
+                <a href="#contact-form" class="cta-button">اطلب استشارة</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="arabic-heading" style="font-size: 3rem; margin-bottom: 1rem;">الدعم والاستشارات</h1>
+            <p class="lead" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                احصل على دعم متخصص في البحث العلمي والتحليل الإحصائي من خبير متميز
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-section" id="contact-form">
+        <div class="container">
+            <div class="contact-container fade-in">
+                <div class="form-header">
+                    <h2 class="form-title arabic-heading">نموذج طلب استشارة</h2>
+                    <p class="form-subtitle">املأ النموذج التالي وسأقوم بالرد عليك خلال 24-48 ساعة</p>
+                </div>
+                
+                <!-- Google Forms Embedded -->
+                <div style="display: flex; justify-content: center;">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe_n4ezZsnvrhvETIe6fe3EBsMK0KiL4IKDWs5dQqFAzehFGA/viewform?embedded=true" 
+                            width="100%" 
+                            height="1200" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            style="max-width: 800px; border-radius: 10px;">
+                        جاري تحميل النموذج...
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="arabic-heading" style="font-size: 2.5rem; color: var(--primary-navy); margin-bottom: 1rem;">
+                    معلومات التواصل
+                </h2>
+                <p class="lead" style="color: #666;">
+                    يمكنك التواصل معي مباشرة من خلال القنوات التالية
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4 class="contact-title arabic-heading">المستشار</h4>
+                        <div class="contact-details">
+                            <p><strong>محمود محمد عبدالرحيم</strong></p>
+                            <p>خبير في البحث العلمي والتحليل الإحصائي</p>
+                            <p>خبرة تزيد عن 10 سنوات</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4 class="contact-title arabic-heading">الهاتف</h4>
+                        <div class="contact-details">
+                            <p><a href="tel:+96894764758">+96894764758</a></p>
+                            <p>متاح للاتصال من 9 صباحاً إلى 6 مساءً</p>
+                            <p>بتوقيت سلطنة عمان (GMT+4)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4 class="contact-title arabic-heading">البريد الإلكتروني</h4>
+                        <div class="contact-details">
+                            <p><a href="mailto:support@bahithi.com">support@bahithi.com</a></p>
+                            <p>الرد خلال 24-48 ساعة</p>
+                            <p>للاستشارات العاجلة يرجى الاتصال</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services-section">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="arabic-heading" style="font-size: 2.5rem; color: var(--primary-navy); margin-bottom: 1rem;">
+                    خدماتنا المتخصصة
+                </h2>
+                <p class="lead" style="color: #666;">
+                    نقدم مجموعة متكاملة من الخدمات المصممة خصيصاً لدعم الباحثين
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4 class="service-title arabic-heading">التحليل الإحصائي</h4>
+                        <p class="service-description">
+                            تحليل شامل للبيانات باستخدام أحدث الأساليب الإحصائية على SPSS وExcel مع تفسير النتائج
+                        </p>
+                        <div class="service-price">يبدأ من 15 ريال</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="service-title arabic-heading">إرشادات البحث</h4>
+                        <p class="service-description">
+                            مساعدة في اختيار المنهجية، صياغة الفرضيات، وتصميم أدوات جمع البيانات
+                        </p>
+                        <div class="service-price">يبدأ من 10 ريال</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-spell-check"></i>
+                        </div>
+                        <h4 class="service-title arabic-heading">مراجعة وتدقيق</h4>
+                        <p class="service-description">
+                            مراجعة شاملة للبحث من حيث المنهجية، الأسلوب العلمي، وتوثيق المصادر
+                        </p>
+                        <div class="service-price">يبدأ من 15 ريال</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4 class="service-title arabic-heading">إدخال البيانات</h4>
+                        <p class="service-description">
+                            إدخال البيانات بشكل احترافي وتنظيمها بصيغة مناسبة للتحليل الإحصائي
+                        </p>
+                        <div class="service-price">يبدأ من 10 ريال</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <h4 class="service-title arabic-heading">تنسيق المراجع</h4>
+                        <p class="service-description">
+                            تنسيق قائمة المراجع حسب أنماط التوثيق المختلفة (APA, MLA, Chicago)
+                        </p>
+                        <div class="service-price">يبدأ من 8 ريال</div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="service-title arabic-heading">تدريب خاص</h4>
+                        <p class="service-description">
+                            جلسات تدريبية خاصة على SPSS، Excel، وأساليب البحث العلمي
+                        </p>
+                        <div class="service-price">يبدأ من 8 ريال/ساعة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="arabic-heading" style="font-size: 2.5rem; color: var(--primary-navy); margin-bottom: 1rem;">
+                    الأسئلة الشائعة
+                </h2>
+                <p class="lead" style="color: #666;">
+                    إجابات على الأسئلة الأكثر شيوعاً حول خدماتنا
+                </p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>كم مدة الرد على الطلبات؟</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>يتم الرد على جميع الطلبات خلال 24-48 ساعة كحد أقصى. للطلبات العاجلة، يرجى الاتصال المباشر بالرقم المتوفر.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>هل تقدمون خدمات للطلاب الدوليين؟</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>نعم، نقدم خدماتنا لجميع الطلاب في الوطن العربي والعالم، ويمكن التواصل باللغتين العربية والإنجليزية.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>ما هي وسائل الدفع المتاحة؟</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>نقبل الدفع عبر التحويل البنكي، باي بال، ومعظم وسائل الدفع الإلكترونية الشائعة.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>هل تضمنون سرية البيانات؟</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>نعم، نحن ملتزمون بسرية تامة لجميع البيانات والأبحاث التي يتم مشاركتها معنا، ولا يتم مشاركتها مع أي طرف ثالث.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item fade-in">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>هل يمكنكم العمل على برامج إحصائية أخرى غير SPSS؟</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>نعم، نعمل على SPSS، Excel، R، SAS، وغيرها من البرامج الإحصائية حسب احتياجات البحث.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: var(--text-charcoal); color: white; padding: 3rem 0 2rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">روابط سريعة</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="index.html" style="color: #ccc; text-decoration: none;">الرئيسية</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="research-guide.html" style="color: #ccc; text-decoration: none;">الإرشادات</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="statistics.html" style="color: #ccc; text-decoration: none;">الإحصاء</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="support.html" style="color: #ccc; text-decoration: none;">الدعم</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">معلومات التواصل</h5>
+                    <p style="color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-user"></i> محمود محمد عبدالرحيم</p>
+                    <p style="color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-phone"></i> +96894764758</p>
+                    <p style="color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-envelope"></i> matheg2010@gmail.com</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">خدماتنا</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="statistics.html" style="color: #ccc; text-decoration: none;">التحليل الإحصائي</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="research-guide.html" style="color: #ccc; text-decoration: none;">كتابة البحوث</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="support.html" style="color: #ccc; text-decoration: none;">الاستشارات</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="research-guide.html" style="color: #ccc; text-decoration: none;">المصادر والمراجع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">تابعنا</h5>
+                    <div class="social-links">
+                        <a href="#" style="color: #ccc; margin-left: 1rem; text-decoration: none;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" style="color: #ccc; margin-left: 1rem; text-decoration: none;">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" style="color: #ccc; margin-left: 1rem; text-decoration: none;">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center pt-3 border-top" style="border-color: #444;">
+                <p style="color: #999; margin: 0;">&copy; 2025 - جميع الحقوق محفوظة لمحمود محمد عبدالرحيم</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Support Page JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initScrollAnimations();
+        });
+
+        function toggleFAQ(button) {
+            const faqItem = button.closest('.faq-item');
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

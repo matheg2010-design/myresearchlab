@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل البحث العلمي - بحثي</title>
+    <meta name="description" content="دليل متكامل لكتابة البحث العلمي، مناهج البحث، وإرشادات التوثيق الأكاديمي">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-navy: #1a365d;
+            --secondary-gold: #d69e2e;
+            --tertiary-gray: #f7fafc;
+            --text-charcoal: #2d3748;
+            --success-emerald: #38a169;
+            --warning-amber: #d69e2e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-charcoal);
+            background-color: #ffffff;
+        }
+        
+        .arabic-heading {
+            font-family: 'Amiri', serif;
+            font-weight: 700;
+        }
+        
+        .english-text {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(26, 54, 93, 0.98);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-gold) !important;
+        }
+        
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--secondary-gold) !important;
+        }
+        
+        .cta-button {
+            background: var(--secondary-gold);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #b7791f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(214, 158, 46, 0.3);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-navy), #2d3748);
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(214,158,46,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Research Types Section */
+        .research-types {
+            padding: 5rem 0;
+            background: var(--tertiary-gray);
+        }
+        
+        .research-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary-gold);
+        }
+        
+        .research-card.active {
+            border-color: var(--secondary-gold);
+            background: linear-gradient(135deg, #fff, #fef7e0);
+        }
+        
+        .research-icon {
+            font-size: 3rem;
+            color: var(--secondary-gold);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .research-card:hover .research-icon {
+            transform: scale(1.1);
+        }
+        
+        .research-title {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .research-description {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .research-details {
+            display: none;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .research-details.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .research-details h5 {
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .research-details ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .research-details li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-right: 1.5rem;
+        }
+        
+        .research-details li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--success-emerald);
+            font-weight: bold;
+        }
+        
+        /* IMRAD Section */
+        .imrad-section {
+            padding: 5rem 0;
+        }
+        
+        .imrad-diagram {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .imrad-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .imrad-step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--tertiary-gray);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .imrad-step::after {
+            content: '→';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--secondary-gold);
+            font-weight: bold;
+        }
+        
+        .imrad-step:first-child::after {
+            display: none;
+        }
+        
+        .imrad-step:hover {
+            background: var(--secondary-gold);
+            color: white;
+            transform: translateY(-5px);
+        }
+        
+        .imrad-step.active {
+            background: var(--primary-navy);
+            color: white;
+        }
+        
+        .imrad-step h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .imrad-step p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .imrad-details {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .imrad-details.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        /* Citation Styles */
+        .citation-section {
+            padding: 5rem 0;
+            background: var(--tertiary-gray);
+        }
+        
+        .citation-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .citation-tab {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .citation-tab:hover {
+            border-color: var(--secondary-gold);
+            background: #fef7e0;
+        }
+        
+        .citation-tab.active {
+            background: var(--secondary-gold);
+            color: white;
+            border-color: var(--secondary-gold);
+        }
+        
+        .citation-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+        
+        .citation-content.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .citation-example {
+            background: #f8f9fa;
+            border-right: 4px solid var(--secondary-gold);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            font-family: 'Inter', monospace;
+        }
+        
+        /* Download Section */
+        .download-section {
+            padding: 5rem 0;
+        }
+        
+        .download-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-icon {
+            font-size: 3rem;
+            color: var(--secondary-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .download-btn {
+            background: var(--secondary-gold);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            background: #b7791f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(214, 158, 46, 0.3);
+            color: white;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .imrad-flow {
+                flex-direction: column;
+            }
+            
+            .imrad-step::after {
+                content: '↓';
+                left: 50%;
+                top: 100%;
+                transform: translateX(-50%);
+            }
+            
+            .imrad-step:first-child::after {
+                display: block;
+            }
+            
+            .citation-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .research-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand arabic-heading" href="index.html">بحثي</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="research-guide.html">الإرشادات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="statistics.html">الإحصاء</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support.html">الدعم</a>
+                    </li>
+                </ul>
+                <a href="support.html" class="cta-button">اطلب استشارة</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="arabic-heading" style="font-size: 3rem; margin-bottom: 1rem;">دليل البحث العلمي</h1>
+            <p class="lead" style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                دليل متكامل لمساعدتك في رحلة البحث العلمي، من اختيار المنهجية إلى كتابة البحث وتوثيق المصادر
+            </p>
+        </div>
+    </section>
+
+    <!-- Research Types Section -->
+    <section class="research-types">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="arabic-heading" style="font-size: 2.5rem; color: var(--primary-navy); margin-bottom: 1rem;">أنواع مناهج البحث</h2>
+                <p class="lead" style="color: #666; max-width: 700px; margin: 0 auto;">
+                    تعلم عن الأنواع المختلفة لمناهج البحث واختر الأنسب لدراستك
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="research-card fade-in" data-research-type="quantitative">
+                        <div class="research-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="research-title arabic-heading">البحث الكمي</h3>
+                        <p class="research-description">
+                            يركز على القياس والتحليل العددي للبيانات، ويستخدم الأساليب الإحصائية لاختبار الفرضيات والوصول إلى نتائج عامة.
+                        </p>
+                        <button class="btn btn-outline-primary">عرض التفاصيل</button>
+                        
+                        <div class="research-details">
+                            <h5>خصائص البحث الكمي:</h5>
+                            <ul>
+                                <li>يعتمد على الأرقام والقياسات</li>
+                                <li>يستخدم الأدوات الإحصائية</li>
+                                <li>يهدف إلى إثبات العلاقات السببية</li>
+                                <li>يعطي نتائج قابلة للتعميم</li>
+                                <li>يستخدم عينات كبيرة</li>
+                            </ul>
+                            <h5 class="mt-3">أمثلة:</h5>
+                            <ul>
+                                <li>دراسة العلاقة بين التحصيل الدراسي والدخل</li>
+                                <li>قياس فعالية برنامج تدريبي</li>
+                                <li>تحليل أثر متغير على متغير آخر</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="research-card fade-in" data-research-type="qualitative">
+                        <div class="research-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="research-title arabic-heading">البحث النوعي</h3>
+                        <p class="research-description">
+                            يركز على فهم المعاني والتجارب والآراء، ويستخدم المقابلات والملاحظة للحصول على فهم عميق للظواهر.
+                        </p>
+                        <button class="btn btn-outline-primary">عرض التفاصيل</button>
+                        
+                        <div class="research-details">
+                            <h5>خصائص البحث النوعي:</h5>
+                            <ul>
+                                <li>يركز على الفهم العميق</li>
+                                <li>يستخدم أدوات غير رقمية</li>
+                                <li>يهدف إلى اكتشاف المعاني</li>
+                                <li>يعطي نتائج سياقية</li>
+                                <li>يستخدم عينات صغيرة</li>
+                            </ul>
+                            <h5 class="mt-3">أمثلة:</h5>
+                            <ul>
+                                <li>دراسة تجارب المرضى مع نظام صحي</li>
+                                <li>فهم ثقافة مجتمع معين</li>
+                                <li>تحليل محتوى وسائل التواصل</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="research-card fade-in" data-research-type="mixed">
+                        <div class="research-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="research-title arabic-heading">البحث المختلط</h3>
+                        <p class="research-description">
+                            يجمع بين الأساليب الكمية والنوعية للحصول على فهم شامل، ويستخدم التثليث لزيادة موثوقية النتائج.
+                        </p>
+                        <button class="btn btn-outline-primary">عرض التفاصيل</button>
+                        
+                        <div class="research-details">
+                            <h5>خصائص البحث المختلط:</h5>
+                            <ul>
+                                <li>يجمع بين الأرقام والقصص</li>
+                                <li>يستخدم أدوات متنوعة</li>
+                                <li>يهدف إلى فهم شامل</li>
+                                <li>يعزز من موثوقية النتائج</li>
+                                <li>يحتاج إلى خبرة متنوعة</li>
+                            </ul>
+                            <h5 class="mt-3">أمثلة:</h5>
+                            <ul>
+                                <li>دراسة فعالية برنامج مع مقابلات ومقاييس</li>
+                                <li>تحليل سلوك المستخدمين مع استبيان وملاحظة</li>
+                                <li>تقييم سياسة عامة بأدوات متعددة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMRAD Structure Section -->
+    <section class="imrad-section">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="arabic-heading" style="font-size: 2.5rem; color: var(--primary-navy); margin-bottom: 1rem;">هيكل البحث العلمي (IMRAD)</h2>
+                <p class="lead" style="color: #666; max-width: 700px; margin: 0 auto;">
+                    التركيبة القياسية لكتابة البحث العلمي
+                </p>
+            </div>
+            
+            <div class="imrad-diagram fade-in">
+                <div class="imrad-flow">
+                    <div class="imrad-step active" data-step="introduction">
+                        <h4 class="arabic-heading">المقدمة</h4>
+                        <p>Introduction</p>
+                    </div>
+                    <div class="imrad-step" data-step="methods">
+                        <h4 class="arabic-heading">المنهجية</h4>
+                        <p>Methods</p>
+                    </div>
+                    <div class="imrad-step" data-step="results">
+                        <h4 class="arabic-heading">النتائج</h4>
+                        <p>Results</p>
+                    </div>
+                    <div class="imrad-step" data-step="discussion">
+                        <h4 class="arabic-heading">المناقشة</h4>
+                        <p>Discussion</p>
+                    </div>
+                </div>
+                
+                <div class="imrad-details active" id="introduction-details">
+                    <h4 class="arabic-heading mb-3" style="color: var(--primary-navy);">المقدمة (Introduction)</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>محتويات المقدمة:</h5>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>خلفية الدراسة:</strong> السياق العام للبحث
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>مراجعة الأدبيات:</strong> ما تم إنجازه سابقاً
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>فجوة المعرفة:</strong> المشكلة البحثية
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>أهداف الدراسة:</strong> ما تريد تحقيقه
+                                </li>
+                                <li style="padding: 0.5rem 0;">
+                                    <strong>فرضيات البحث:</strong> التنبؤات العلمية
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>نصائح الكتابة:</h5>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    ابدأ بالعام ثم انتقل إلى الخاص
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    استخدم أدلة من الأدبيات
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    حدد المشكلة بوضوح
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    اجعل الأهداف محددة وقابلة للقياس
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="imrad-details" id="methods-details">
+                    <h4 class="arabic-heading mb-3" style="color: var(--primary-navy);">المنهجية (Methods)</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>عناصر المنهجية:</h5>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>تصميم الدراسة:</strong> نوع البحث ومنهجه
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>العينة:</strong> حجمها وطريقة اختيارها
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>الأدوات:</strong> وسائل جمع البيانات
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>الإجراءات:</strong> خطوات تنفيذ الدراسة
+                                </li>
+                                <li style="padding: 0.5rem 0;">
+                                    <strong>التحليل الإحصائي:</strong> الأساليب المستخدمة
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>أهمية المنهجية:</h5>
+                            <p>تمكن القراء من:</p>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    تقييم جودة الدراسة
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    تكرار الدراسة
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    فهم سياق النتائج
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="imrad-details" id="results-details">
+                    <h4 class="arabic-heading mb-3" style="color: var(--primary-navy);">النتائج (Results)</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>مكونات النتائج:</h5>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>الإحصاءات الوصفية:</strong> المتوسطات والانحرافات
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>النتائج الرئيسية:</strong> ما يتعلق بفرضيات البحث
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>الجداول والرسوم:</strong> عرض مرئي للبيانات
+                                </li>
+                                <li style="padding: 0.5rem 0;">
+                                    <strong>الاختبارات الإحصائية:</strong> القيم الاحتمالية
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>قواعد عرض النتائج:</h5>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    لا تفسير في هذا القسم
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    استخدم الأرقام والحقائق فقط
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    رتب النتائج من المهمة للأقل أهمية
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    أرفق الجداول والرسوم البيانية
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="imrad-details" id="discussion-details">
+                    <h4 class="arabic-heading mb-3" style="color: var(--primary-navy);">المناقشة (Discussion)</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>عناصر المناقشة:</h5>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>تلخيص النتائج الرئيسية:</strong> بشكل موجز
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>تفسير النتائج:</strong> معناها ودلالاتها
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>مقارنة بالدراسات السابقة:</strong> التشابه والاختلاف
+                                </li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+                                    <strong>الحدود والقيود:</strong> ما يمكن وما لا يمكن استنتاجه
+                                </li>
+                                <li style="padding: 0.5rem 0;">
+                                    <strong>التوصيات:</strong> للممارسة والبحث المستقبلي
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>نصائح للمناقشة:</h5>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    اربط النتائج بفرضياتك
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    ناقش النتائج غير المتوقعة
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    كن صادقاً حول القيود
+                                </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                    <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                    اقترح اتجاهات للبحث المستقبلي
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation Styles Section -->
+    <section class="citation-section">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="arabic-heading" style="font-size: 2.5rem; color: var(--primary-navy); margin-bottom: 1rem;">أنماط التوثيق الأكاديمي</h2>
+                <p class="lead" style="color: #666; max-width: 700px; margin: 0 auto;">
+                    تعلم كيفية توثيق المصادر بشكل صحيح حسب أنماط التوثيق المختلفة
+                </p>
+            </div>
+            
+            <div class="citation-tabs fade-in">
+                <div class="citation-tab active" data-style="apa">APA</div>
+                <div class="citation-tab" data-style="mla">MLA</div>
+                <div class="citation-tab" data-style="chicago">Chicago</div>
+                <div class="citation-tab" data-style="harvard">Harvard</div>
+            </div>
+            
+            <div class="citation-content active" id="apa-content">
+                <h4 class="arabic-heading mb-4" style="color: var(--primary-navy);">نمط APA (American Psychological Association)</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>في النص:</h5>
+                        <div class="citation-example">
+                            (محمد، 2023)<br>
+                            (Mohammed, 2023)<br>
+                            (محمد وعبدالرحيم، 2023)<br>
+                            (Mohammed & Abdulrahim, 2023)
+                        </div>
+                        
+                        <h5>قائمة المراجع:</h5>
+                        <div class="citation-example">
+                            محمد، م. (2023). عنوان الكتاب. دار النشر.<br><br>
+                            Mohammed, M. (2023). <em>Book title</em>. Publisher.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>مميزات النمط:</h5>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                يستخدم في العلوم الاجتماعية والسلوكية
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                يركز على تاريخ النشر
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                ترتيب أبجدي لقائمة المراجع
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="citation-content" id="mla-content">
+                <h4 class="arabic-heading mb-4" style="color: var(--primary-navy);">نمط MLA (Modern Language Association)</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>في النص:</h5>
+                        <div class="citation-example">
+                            (محمد 45)<br>
+                            (Mohammed 45)<br>
+                            (محمد وعبدالرحيم 45)<br>
+                            (Mohammed and Abdulrahim 45)
+                        </div>
+                        
+                        <h5>قائمة المصادر:</h5>
+                        <div class="citation-example">
+                            محمد، محمود. <em>عنوان الكتاب</em>. دار النشر، 2023.<br><br>
+                            Mohammed, Mahmood. <em>Book Title</em>. Publisher, 2023.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>مميزات النمط:</h5>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                يستخدم في العلوم الإنسانية والأدب
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                يركز على اسم المؤلف
+                            </li>
+                                <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                يشير إلى رقم الصفحة
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="citation-content" id="chicago-content">
+                <h4 class="arabic-heading mb-4" style="color: var(--primary-navy);">نمط Chicago</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>في النص (النظام المأخوذ من المؤلف-التاريخ):</h5>
+                        <div class="citation-example">
+                            (محمد 2023, 45)<br>
+                            (Mohammed 2023, 45)
+                        </div>
+                        
+                        <h5>قائمة المراجع:</h5>
+                        <div class="citation-example">
+                            محمد، محمود. 2023. <em>عنوان الكتاب</em>. مدينة: دار النشر.<br><br>
+                            Mohammed, Mahmood. 2023. <em>Book Title</em>. City: Publisher.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>مميزات النمط:</h5>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                يستخدم في التاريخ والفنون
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                مرونة في نظام التوثيق
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                تفصيل في قائمة المراجع
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="citation-content" id="harvard-content">
+                <h4 class="arabic-heading mb-4" style="color: var(--primary-navy);">نمط Harvard</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>في النص:</h5>
+                        <div class="citation-example">
+                            (محمد، 2023)<br>
+                            (Mohammed, 2023)<br>
+                            (محمد وعبدالرحيم، 2023)<br>
+                            (Mohammed and Abdulrahim, 2023)
+                        </div>
+                        
+                        <h5>قائمة المراجع:</h5>
+                        <div class="citation-example">
+                            محمد، م.، 2023. <em>عنوان الكتاب</em>. مدينة: دار النشر.<br><br>
+                            Mohammed, M., 2023. <em>Book Title</em>. City: Publisher.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>مميزات النمط:</h5>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                شائع في الجامعات البريطانية
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                بسيط وسهل المتابعة
+                            </li>
+                            <li style="padding: 0.5rem 0; position: relative; padding-right: 1.5rem;">
+                                <span style="position: absolute; right: 0; color: var(--success-emerald);">✓</span>
+                                تركيز على المؤلف والتاريخ
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Templates Section -->
+    <section class="download-section">
+        <div class="container">
+            <div class="text-center mb-5 fade-in">
+                <h2 class="arabic-heading" style="font-size: 2.5rem; color: var(--primary-navy); margin-bottom: 1rem;">قوالب جاهزة للتحميل</h2>
+                <p class="lead" style="color: #666; max-width: 700px; margin: 0 auto;">
+                    قوالب ونماذج جاهزة لتسهيل عملية كتابة بحثك
+                </p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="download-card fade-in">
+                        <div class="download-icon">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <h4 class="arabic-heading mb-3" style="color: var(--primary-navy);">قالب بحث كامل</h4>
+                        <p class="mb-4">قالب متكامل يحتوي على جميع أقسام البحث العلمي بتنسيق احترافي</p>
+                        <a href="#" class="download-btn" onclick="showComingSoon()">
+                            <i class="fas fa-download"></i> تحميل القالب
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="download-card fade-in">
+                        <div class="download-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4 class="arabic-heading mb-3" style="color: var(--primary-navy);">قالب تحليل إحصائي</h4>
+                        <p class="mb-4">قالب خاص بعرض نتائج التحليل الإحصائي مع جداول ورسوم بيانية</p>
+                        <a href="#" class="download-btn" onclick="showComingSoon()">
+                            <i class="fas fa-download"></i> تحميل القالب
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="download-card fade-in">
+                        <div class="download-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <h4 class="arabic-heading mb-3" style="color: var(--primary-navy);">قالب مراجع</h4>
+                        <p class="mb-4">قالب منظم لقائمة المراجع والمصادر بأنماط التوثيق المختلفة</p>
+                        <a href="#" class="download-btn" onclick="showComingSoon()">
+                            <i class="fas fa-download"></i> تحميل القالب
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: var(--text-charcoal); color: white; padding: 3rem 0 2rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">روابط سريعة</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="index.html" style="color: #ccc; text-decoration: none;">الرئيسية</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="research-guide.html" style="color: #ccc; text-decoration: none;">الإرشادات</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="statistics.html" style="color: #ccc; text-decoration: none;">الإحصاء</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="support.html" style="color: #ccc; text-decoration: none;">الدعم</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">معلومات التواصل</h5>
+                    <p style="color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-user"></i> محمود محمد عبدالرحيم</p>
+                    <p style="color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-phone"></i> +96894764758</p>
+                    <p style="color: #ccc; margin-bottom: 0.5rem;"><i class="fas fa-envelope"></i> matheg2010@gmail.com</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">خدماتنا</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="statistics.html" style="color: #ccc; text-decoration: none;">التحليل الإحصائي</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="research-guide.html" style="color: #ccc; text-decoration: none;">كتابة البحوث</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="support.html" style="color: #ccc; text-decoration: none;">الاستشارات</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="research-guide.html" style="color: #ccc; text-decoration: none;">المصادر والمراجع</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 style="color: var(--secondary-gold); margin-bottom: 1rem;">تابعنا</h5>
+                    <div class="social-links">
+                        <a href="#" style="color: #ccc; margin-left: 1rem; text-decoration: none;">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" style="color: #ccc; margin-left: 1rem; text-decoration: none;">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" style="color: #ccc; margin-left: 1rem; text-decoration: none;">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center pt-3 border-top" style="border-color: #444;">
+                <p style="color: #999; margin: 0;">&copy; 2025 - جميع الحقوق محفوظة لمحمود محمد عبدالرحيم</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Research Guide Page JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initResearchCards();
+            initIMRAD();
+            initCitationTabs();
+            initScrollAnimations();
+        });
+
+        function initResearchCards() {
+            const researchCards = document.querySelectorAll('.research-card');
+            
+            researchCards.forEach(card => {
+                const button = card.querySelector('button');
+                const details = card.querySelector('.research-details');
+                
+                button.addEventListener('click', function() {
+                    // Close other cards
+                    researchCards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            otherCard.classList.remove('active');
+                            otherCard.querySelector('.research-details').classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current card
+                    card.classList.toggle('active');
+                    details.classList.toggle('active');
+                    
+                    if (details.classList.contains('active')) {
+                        button.textContent = 'إخفاء التفاصيل';
+                        button.classList.remove('btn-outline-primary');
+                        button.classList.add('btn-primary');
+                    } else {
+                        button.textContent = 'عرض التفاصيل';
+                        button.classList.remove('btn-primary');
+                        button.classList.add('btn-outline-primary');
+                    }
+                });
+            });
+        }
+
+        function initIMRAD() {
+            const steps = document.querySelectorAll('.imrad-step');
+            const details = document.querySelectorAll('.imrad-details');
+            
+            steps.forEach(step => {
+                step.addEventListener('click', function() {
+                    const targetStep = this.dataset.step;
+                    
+                    // Remove active class from all steps and details
+                    steps.forEach(s => s.classList.remove('active'));
+                    details.forEach(d => d.classList.remove('active'));
+                    
+                    // Add active class to clicked step and corresponding details
+                    this.classList.add('active');
+                    document.getElementById(`${targetStep}-details`).classList.add('active');
+                });
+            });
+        }
+
+        function initCitationTabs() {
+            const tabs = document.querySelectorAll('.citation-tab');
+            const contents = document.querySelectorAll('.citation-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetStyle = this.dataset.style;
+                    
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(`${targetStyle}-content`).classList.add('active');
+                });
+            });
+        }
+
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        function showComingSoon() {
+            alert('قريباً! هذه الميزة قيد التطوير وسيتم إضافتها قريباً.');
+        }
+    </script>
+</body>
+</html>
