@@ -238,7 +238,7 @@ SHOW TABLES;
 
 **محمود محمد عبدالرحيم**  
 منصة بحثي - 2025  
-[www.bahithi.com](http://www.bahithi.com)
+
 =======
 # myresearchlab
 منصة بحثي
