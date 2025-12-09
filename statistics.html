@@ -95,7 +95,7 @@
         
         /* Page Header */
         .page-header {
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.7)), url('resources/statistical-bg.jpg');
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.9), rgba(26, 54, 93, 0.7)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -628,7 +628,7 @@
             <div class="wizard-container fade-in" id="statistical-wizard">
                 <div class="progress-container">
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 20%">الخطوة 1 من 5</div>
+                        <div class="progress-bar" role="progressbar" style="width: 16.6%">الخطوة 1 من 6</div>
                     </div>
                 </div>
                 
@@ -641,83 +641,111 @@
                                 <i class="fas fa-balance-scale"></i>
                             </div>
                             <h5>مجموعتان</h5>
-                            <p>مثال: مقارنة بين ذكور وإناث، أو مجموعة تجريبية وضابطة</p>
+                            <p>مثال: مقارنة بين ذكور وإناث، أو قبل وبعد التدخل</p>
                         </div>
                         <div class="option-card" data-value="three-plus-groups">
                             <div class="option-icon">
                                 <i class="fas fa-users"></i>
                             </div>
                             <h5>ثلاث مجموعات أو أكثر</h5>
-                            <p>مثال: مقارنة بين عدة فئات عمرية أو مستويات تعليمية</p>
+                            <p>مثال: مقارنة بين عدة طرق علاج أو فئات عمرية</p>
                         </div>
                         <div class="option-card" data-value="correlation">
                             <div class="option-icon">
                                 <i class="fas fa-project-diagram"></i>
                             </div>
-                            <h5>علاقة بين متغيرات</h5>
-                            <p>مثال: العلاقة بين التحصيل الدراسي والدخل</p>
+                            <h5>دراسة العلاقة بين متغيرات</h5>
+                            <p>مثال: العلاقة بين التحصيل الدراسي والمهارات الاجتماعية</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Step 2: Data Type -->
+                <!-- Step 2: Sample Design -->
                 <div class="wizard-step" id="step-2">
+                    <h3 class="step-title arabic-heading">ما هي طبيعة المجموعات/العينات؟</h3>
+                    <div class="options-container">
+                        <div class="option-card" data-value="independent">
+                            <div class="option-icon">
+                                <i class="fas fa-users-slash"></i>
+                            </div>
+                            <h5>عينات مستقلة (Independent)</h5>
+                            <p>أشخاص مختلفون في كل مجموعة (مثال: ذكور مقابل إناث)</p>
+                        </div>
+                        <div class="option-card" data-value="paired">
+                            <div class="option-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h5>عينات مترابطة (Paired/Repeated)</h5>
+                            <p>نفس الأشخاص تم قياسهم مرتين أو أكثر (مثال: قبلي وبعدي)</p>
+                        </div>
+                        <div class="option-card" data-value="not-applicable">
+                            <div class="option-icon">
+                                <i class="fas fa-ban"></i>
+                            </div>
+                            <h5>لا ينطبق</h5>
+                            <p>لدراسات الارتباط أو تحليل الانحدار فقط</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Data Type -->
+                <div class="wizard-step" id="step-3">
                     <h3 class="step-title arabic-heading">ما نوع البيانات لديك؟</h3>
                     <div class="options-container">
                         <div class="option-card" data-value="continuous">
                             <div class="option-icon">
                                 <i class="fas fa-chart-line"></i>
                             </div>
-                            <h5>بيانات مستمرة</h5>
+                            <h5>بيانات مستمرة (كمية)</h5>
                             <p>أرقام قابلة للقياس مثل العمر، الوزن، الدرجات</p>
                         </div>
                         <div class="option-card" data-value="categorical">
                             <div class="option-icon">
                                 <i class="fas fa-tags"></i>
                             </div>
-                            <h5>بيانات تصنيفية</h5>
+                            <h5>بيانات تصنيفية (اسمية)</h5>
                             <p>فئات مثل النوع الاجتماعي، التعليم، الحالة الاجتماعية</p>
                         </div>
                         <div class="option-card" data-value="ordinal">
                             <div class="option-icon">
                                 <i class="fas fa-sort-amount-up"></i>
                             </div>
-                            <h5>بيانات ترتيبية</h5>
-                            <p>ترتيب مثل مستوى الرضا، درجة الاتفاق</p>
+                            <h5>بيانات ترتيبية (رتبية)</h5>
+                            <p>ترتيب مثل مستوى الرضا، درجة الاتفاق (ليس لها معنى رقمي)</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Step 3: Sample Size -->
-                <div class="wizard-step" id="step-3">
+                <!-- Step 4: Sample Size -->
+                <div class="wizard-step" id="step-4">
                     <h3 class="step-title arabic-heading">ما حجم العينة لديك؟</h3>
                     <div class="options-container">
                         <div class="option-card" data-value="small">
                             <div class="option-icon">
                                 <i class="fas fa-user-friends"></i>
                             </div>
-                            <h5>صغير (أقل من 30)</h5>
-                            <p>عينة صغيرة تتطلب اختبارات غير معلمية</p>
+                            <h5>صغير (أقل من 30 لكل مجموعة)</h5>
+                            <p>توصية باستخدام اختبارات غير معلمية إذا لم يكن التوزيع طبيعياً</p>
                         </div>
                         <div class="option-card" data-value="medium">
                             <div class="option-icon">
                                 <i class="fas fa-users"></i>
                             </div>
                             <h5>متوسط (30-100)</h5>
-                            <p>حجم عينة متوسط مناسب لمعظم الاختبارات</p>
+                            <p>حجم عينة مناسب لمعظم الاختبارات</p>
                         </div>
                         <div class="option-card" data-value="large">
                             <div class="option-icon">
                                 <i class="fas fa-users-cog"></i>
                             </div>
                             <h5>كبير (أكثر من 100)</h5>
-                            <p>عينة كبيرة تسمح باستخدام الاختبارات المعقدة</p>
+                            <p>حجم عينة كبير يسمح باستخدام الاختبارات المعقدة</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Step 4: Distribution -->
-                <div class="wizard-step" id="step-4">
+                <!-- Step 5: Distribution -->
+                <div class="wizard-step" id="step-5">
                     <h3 class="step-title arabic-heading">هل بياناتك تتبع التوزيع الطبيعي؟</h3>
                     <div class="options-container">
                         <div class="option-card" data-value="normal">
@@ -725,27 +753,27 @@
                                 <i class="fas fa-bell"></i>
                             </div>
                             <h5>نعم، توزيع طبيعي</h5>
-                            <p>البيانات موزعة توزيعاً طبيعياً (جرس الشكل)</p>
+                            <p>تم التحقق من التوزيع الطبيعي باستخدام اختبار شابيرو-ويلك أو كولموجوروف-سميرنوف</p>
                         </div>
                         <div class="option-card" data-value="non-normal">
                             <div class="option-icon">
                                 <i class="fas fa-wave-square"></i>
                             </div>
                             <h5>لا، غير طبيعي</h5>
-                              <p>البيانات مرتبة أو غير متماثلة</p>
+                            <p>البيانات مرتبة أو غير متماثلة أو اختبرت ووجدت غير طبيعية</p>
                         </div>
                         <div class="option-card" data-value="unknown">
                             <div class="option-icon">
                                 <i class="fas fa-question-circle"></i>
                             </div>
                             <h5>غير متأكد</h5>
-                            <p>سنقترح اختبارات لا تتطلب افتراضات صارمة</p>
+                            <p>سنوصي باستخدام اختبارات غير معلمية لتجنب المشاكل</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Step 5: Research Question -->
-                <div class="wizard-step" id="step-5">
+                <!-- Step 6: Research Question -->
+                <div class="wizard-step" id="step-6">
                     <h3 class="step-title arabic-heading">ما هو هدفك البحثي الرئيسي؟</h3>
                     <div class="options-container">
                         <div class="option-card" data-value="comparison">
@@ -759,7 +787,7 @@
                             <div class="option-icon">
                                 <i class="fas fa-link"></i>
                             </div>
-                            <h5>علاقة بين متغيرات</h5>
+                            <h5>دراسة العلاقة بين متغيرات</h5>
                             <p>هل توجد علاقة بين متغيرين أو أكثر؟</p>
                         </div>
                         <div class="option-card" data-value="prediction">
@@ -767,7 +795,7 @@
                                 <i class="fas fa-crystal-ball"></i>
                             </div>
                             <h5>التنبؤ والتفسير</h5>
-                            <p>يمكنني التنبؤ بقيمة متغير من متغيرات أخرى؟</p>
+                            <p>هل يمكنني التنبؤ بقيمة متغير من متغيرات أخرى؟</p>
                         </div>
                     </div>
                 </div>
@@ -822,9 +850,9 @@
                     <div class="filter-chip active" data-filter="all">الكل</div>
                     <div class="filter-chip" data-filter="parametric">معلمي</div>
                     <div class="filter-chip" data-filter="non-parametric">غير معلمي</div>
-                    <div class="filter-chip" data-filter="correlation">ارتباط</div>
-                    <div class="filter-chip" data-filter="regression">انحدار</div>
                     <div class="filter-chip" data-filter="comparison">مقارنة</div>
+                    <div class="filter-chip" data-filter="association">علاقة</div>
+                    <div class="filter-chip" data-filter="prediction">تنبؤ</div>
                 </div>
             </div>
             
@@ -907,182 +935,300 @@
     
     <!-- Statistics Page JavaScript -->
     <script>
-        // Statistical tests database
+        // قاعدة البيانات الكاملة للاختبارات الإحصائية
         const statisticalTests = [
+            // --- اختبارات المقارنة (مجموعتان) ---
             {
-                id: 't-test',
-                name: 'اختبار T (T-Test)',
+                id: 't-test-indep',
+                name: 'اختبار T للعينات المستقلة (Independent T-Test)',
                 category: 'parametric',
                 type: 'comparison',
-                description: 'يستخدم لاختبار الفرق بين متوسطي مجموعتين مستقلتين أو متصلتين',
-                conditions: [
-                    'البيانات مستمرة',
-                    'التوزيع الطبيعي للبيانات',
-                    'تجانب التباين (للمجموعات المستقلة)'
-                ],
+                description: 'لمقارنة متوسطي مجموعتين منفصلتين تماماً (مثال: ذكور وإناث).',
+                conditions: ['بيانات كمية مستمرة', 'توزيع طبيعي', 'تجانب التباين بين المجموعات', 'عينات مستقلة'],
                 spssSteps: [
-                    'اختر Analyze → Compare Means → Independent-Samples T Test',
-                    'حدد المتغير التابع في Test Variable(s)',
-                    'حدد متغير التجميع في Grouping Variable',
-                    'اضغط على Define Groups وحدد قيم المجموعات',
-                    'اضغط OK للحصول على النتائج'
+                    'Analyze → Compare Means → Independent-Samples T Test',
+                    'ضع المتغير التابع في Test Variables',
+                    'ضع متغير المجموعة في Grouping Variable',
+                    'Define Groups: أدخل قيم المجموعتين (مثل 1 و 2)',
+                    'Options: اختر مستوى الثقة (95%)',
+                    'OK لعرض النتائج'
                 ],
                 excelSteps: [
-                    'استخدم الدالة T.TEST(array1, array2, tails, type)',
-                    'Array1: نطاق البيانات للمجموعة الأولى',
-                    'Array2: نطاق البيانات للمجموعة الثانية',
-                    'Tails: 1 للاختبار أحادي الجانب، 2 للثنائي',
-                    'Type: 1 لمجموعات مترابطة، 2 لمجموعات مستقلة'
+                    'استخدم الدالة: =T.TEST(array1, array2, tails, type)',
+                    'array1: بيانات المجموعة الأولى',
+                    'array2: بيانات المجموعة الثانية',
+                    'tails: 2 لاختبار ثنائي الجانب',
+                    'type: 2 للعينات المستقلة ذات التباين المتجانس',
+                    'إذا كانت p-value < 0.05 فالفرق ذو دلالة إحصائية'
                 ],
-                icon: 'fas fa-not-equal'
+                icon: 'fas fa-arrows-alt-h'
             },
             {
-                id: 'anova',
-                name: 'تحليل التباين (ANOVA)',
+                id: 't-test-paired',
+                name: 'اختبار T للعينات المترابطة (Paired T-Test)',
                 category: 'parametric',
                 type: 'comparison',
-                description: 'يختبر الفرق بين متوسطات ثلاث مجموعات أو أكثر',
-                conditions: [
-                    'البيانات مستمرة',
-                    'التوزيع الطبيعي للبيانات',
-                    'تجانب التباين بين المجموعات',
-                    'استقلال المشاهدات'
-                ],
+                description: 'لمقارنة متوسطي نفس المجموعة في وقتين مختلفين (مثال: قبل وبعد التدريب).',
+                conditions: ['بيانات كمية مستمرة', 'توزيع طبيعي', 'نفس الأشخاص تم قياسهم مرتين'],
                 spssSteps: [
-                    'اختر Analyze → Compare Means → One-Way ANOVA',
-                    'حدد المتغير التابع في Dependent List',
-                    'حدد متغير التجميع في Factor',
-                    'اضغط على Post Hoc لاختبارات المقارنات المتعددة',
-                    'اختر طريقة الاختبار (مثل Tukey) واضغط Continue ثم OK'
+                    'Analyze → Compare Means → Paired-Samples T Test',
+                    'أدخل القياس القبلي في Variable1',
+                    'أدخل القياس البعدي في Variable2',
+                    'OK للحصول على النتائج'
                 ],
                 excelSteps: [
-                    'استخدم أداة Data Analysis → ANOVA: Single Factor',
-                    'حدد نطاق البيانات المدخلة',
-                    'حدد Alpha (عادة 0.05)',
-                    'اختر موقع النتائج واضغط OK'
+                    'استخدم الدالة: =T.TEST(array1, array2, tails, type)',
+                    'array1: القياسات القبلية',
+                    'array2: القياسات البعدية',
+                    'tails: 2 لاختبار ثنائي الجانب',
+                    'type: 1 للعينات المترابطة',
+                    'النتيجة < 0.05 تعني فرقاً ذا دلالة إحصائية'
                 ],
-                icon: 'fas fa-layer-group'
-            },
-            {
-                id: 'chi-square',
-                name: 'اختبار مربع كاي (Chi-Square)',
-                category: 'non-parametric',
-                type: 'association',
-                description: 'يختبر العلاقة بين متغيرين تصنيفيين أو تطابق البيانات مع توزيع نظري',
-                conditions: [
-                    'البيانات تصنيفية',
-                    'الاستقلال المطلق',
-                    'الأعداد المتوقعة > 5 في كل خلية'
-                ],
-                spssSteps: [
-                    'اختر Analyze → Descriptive Statistics → Crosstabs',
-                    'حدد متغير الصفوف والأعمدة',
-                    'اضغط على Statistics واختر Chi-square',
-                    'اضغط على Cells واختر Expected وPercentages',
-                    'اضغط OK للحصول على النتائج'
-                ],
-                excelSteps: [
-                    'أنشئ جدول التكرارات المتقاطعة',
-                    'استخدم الدالة CHISQ.TEST(actual_range, expected_range)',
-                    'للحصول على القيمة الحرجة: CHISQ.INV.RT(probability, df)',
-                    'لحساب درجات الحرية: (rows-1) * (columns-1)'
-                ],
-                icon: 'fas fa-th'
-            },
-            {
-                id: 'correlation',
-                name: 'معامل الارتباط (Correlation)',
-                category: 'parametric',
-                type: 'association',
-                description: 'يقيس قوة واتجاه العلاقة الخطية بين متغيرين مستمرين',
-                conditions: [
-                    'المتغيران مستمران',
-                    'العلاقة الخطية',
-                    'التوزيع الطبيعي للبيانات'
-                ],
-                spssSteps: [
-                    'اختر Analyze → Correlate → Bivariate',
-                    'حدد المتغيرات التي تريد حساب الارتباط بينها',
-                    'اختر نوع معامل الارتباط (Pearson)',
-                    'حدد اختبار المعنوية (Two-tailed)',
-                    'اضغط OK للحصول على النتائج'
-                ],
-                excelSteps: [
-                    'استخدم الدالة CORREL(array1, array2) لحساب معامل الارتباط',
-                    'لحساب معامل الارتباط مع القيمة الاحتمالية: PEARSON',
-                    'لاختبار المعنوية: T-TEST',
-                    'لإنشاء رسم بياني: إدراج → مخطط تفرق'
-                ],
-                icon: 'fas fa-project-diagram'
-            },
-            {
-                id: 'regression',
-                name: 'تحليل الانحدار (Regression)',
-                category: 'parametric',
-                type: 'prediction',
-                description: 'يستخدم للتنبؤ بقيمة متغير تابع من متغيرات مستقلة',
-                conditions: [
-                    'البيانات مستمرة',
-                    'العلاقة الخطية',
-                    'استقلال المشاهدات',
-                    'تجانب التباين'
-                ],
-                spssSteps: [
-                    'اختر Analyze → Regression → Linear',
-                    'حدد المتغير التابع في Dependent',
-                    'حدد المتغيرات المستقلة في Independent(s)',
-                    'اختر الأساليب الإحصائية (Statistics)',
-                    'اضغط OK للحصول على النتائج'
-                ],
-                excelSteps: [
-                    'استخدم أداة Data Analysis → Regression',
-                    'حدد نطاق Y (المتغير التابع)',
-                    'حدد نطاق X (المتغيرات المستقلة)',
-                    'اختر خيارات الإخراج',
-                    'اضغط OK للحصول على النتائج'
-                ],
-                icon: 'fas fa-chart-line'
+                icon: 'fas fa-exchange-alt'
             },
             {
                 id: 'mann-whitney',
                 name: 'اختبار مان-ويتني (Mann-Whitney U)',
                 category: 'non-parametric',
                 type: 'comparison',
-                description: 'بديل غير معلمي لاختبار T لمقارنة مجموعتين مستقلتين',
-                conditions: [
-                    'البيانات ترتيبية أو مستمرة غير طبيعية',
-                    'مجموعتان مستقلتان',
-                    'عينة صغيرة أو غير طبيعية التوزيع'
-                ],
+                description: 'البديل غير المعلمي لاختبار T للعينات المستقلة (عندما لا يتبع التوزيع الطبيعي).',
+                conditions: ['بيانات رتبية أو كمية غير طبيعية', 'عينات مستقلة'],
                 spssSteps: [
-                    'اختر Analyze → Nonparametric Tests → Independent Samples',
-                    'اختر متغير الاختبار في Test Variable List',
-                    'حدد متغير التجميع في Grouping Variable',
-                    'اضغط على Define Groups وحدد القيم',
-                    'اضغط OK للحصول على النتائج'
+                    'Analyze → Nonparametric Tests → Legacy Dialogs → 2 Independent Samples',
+                    'ضع المتغير التابع في Test Variable List',
+                    'ضع متغير التجميع في Grouping Variable',
+                    'Define Groups: أدخل قيم المجموعتين',
+                    'Test Type: اختر Mann-Whitney U',
+                    'OK لعرض النتائج'
                 ],
                 excelSteps: [
-                    'رتب البيانات لكل مجموعة بشكل منفصل',
-                    'احسب الرتب المشتركة',
-                    'استخدم صيغة خاصة لحساب U',
-                    'قارن مع القيمة الحرجة من الجداول',
-                    'أو استخدم أدوات إحصائية متخصصة'
+                    'تحتاج إلى تنزيل إضافة Real Statistics',
+                    'أو استخدام صيغة معقدة لحساب الرتب',
+                    'ننصح باستخدام SPSS أو R لهذا الاختبار'
                 ],
-                icon: 'fas fa-random'
+                icon: 'fas fa-not-equal'
+            },
+            {
+                id: 'wilcoxon',
+                name: 'اختبار ويلكوكسون (Wilcoxon Signed-Rank)',
+                category: 'non-parametric',
+                type: 'comparison',
+                description: 'البديل غير المعلمي لاختبار T للعينات المترابطة.',
+                conditions: ['بيانات رتبية أو كمية غير طبيعية', 'عينات مترابطة'],
+                spssSteps: [
+                    'Analyze → Nonparametric Tests → Legacy Dialogs → 2 Related Samples',
+                    'ضع القياس القبلي في Variable1',
+                    'ضع القياس البعدي في Variable2',
+                    'Test Type: اختر Wilcoxon',
+                    'OK للحصول على النتائج'
+                ],
+                excelSteps: [
+                    'غير متاح بسهولة في Excel',
+                    'ننصح باستخدام SPSS أو برنامج R',
+                    'يمكن استخدام مكتبة Real Statistics'
+                ],
+                icon: 'fas fa-undo'
+            },
+
+            // --- اختبارات المقارنة (3 مجموعات فأكثر) ---
+            {
+                id: 'anova',
+                name: 'تحليل التباين الأحادي (One-Way ANOVA)',
+                category: 'parametric',
+                type: 'comparison',
+                description: 'لمقارنة متوسطات 3 مجموعات مستقلة أو أكثر.',
+                conditions: ['توزيع طبيعي', 'تجانب التباين', 'عينات مستقلة'],
+                spssSteps: [
+                    'Analyze → Compare Means → One-Way ANOVA',
+                    'Dependent List: المتغير التابع',
+                    'Factor: متغير المجموعات',
+                    'Post Hoc: اختر Tukey للمقارنات المتعددة',
+                    'OK لعرض النتائج'
+                ],
+                excelSteps: [
+                    'Data → Data Analysis → ANOVA: Single Factor',
+                    'Input Range: حدد جميع البيانات',
+                    'Grouped By: Columns',
+                    'Alpha: 0.05',
+                    'OK للحصول على النتائج'
+                ],
+                icon: 'fas fa-layer-group'
+            },
+            {
+                id: 'repeated-anova',
+                name: 'تحليل التباين للقياسات المتكررة (Repeated Measures ANOVA)',
+                category: 'parametric',
+                type: 'comparison',
+                description: 'لمقارنة متوسطات 3 قياسات أو أكثر على نفس المجموعة.',
+                conditions: ['توزيع طبيعي', 'تماثلية التباين والتباين المشترك', 'قياسات متكررة'],
+                spssSteps: [
+                    'Analyze → General Linear Model → Repeated Measures',
+                    'Define Within-Subject Factor: أدخل اسم العامل وعدد القياسات',
+                    'Add القياسات: time1, time2, time3, etc.',
+                    'Options: اختر اختبارات المقارنة',
+                    'OK لعرض النتائج'
+                ],
+                excelSteps: [
+                    'غير متاح مباشرة في Excel',
+                    'يحتاج إلى تحليل متقدم',
+                    'ننصح باستخدام SPSS أو SAS'
+                ],
+                icon: 'fas fa-redo'
+            },
+            {
+                id: 'kruskal-wallis',
+                name: 'اختبار كروسكال-واليس (Kruskal-Wallis H)',
+                category: 'non-parametric',
+                type: 'comparison',
+                description: 'البديل غير المعلمي للأنوفا (ANOVA) عند عدم تحقق شروط التوزيع الطبيعي.',
+                conditions: ['بيانات رتبية أو غير طبيعية', '3 مجموعات فأكثر', 'عينات مستقلة'],
+                spssSteps: [
+                    'Analyze → Nonparametric Tests → Legacy Dialogs → K Independent Samples',
+                    'Test Variable List: المتغير التابع',
+                    'Grouping Variable: متغير المجموعات',
+                    'Define Range: حدد قيم المجموعات (مثل 1 و 3)',
+                    'Test Type: اختر Kruskal-Wallis H',
+                    'OK لعرض النتائج'
+                ],
+                excelSteps: [
+                    'غير متاح مباشرة في Excel',
+                    'يحتاج إلى حسابات معقدة للرتب',
+                    'ننصح باستخدام SPSS أو R'
+                ],
+                icon: 'fas fa-stream'
+            },
+            {
+                id: 'friedman',
+                name: 'اختبار فريدمان (Friedman Test)',
+                category: 'non-parametric',
+                type: 'comparison',
+                description: 'البديل غير المعلمي لـ Repeated Measures ANOVA.',
+                conditions: ['بيانات رتبية أو غير طبيعية', '3 قياسات فأكثر', 'عينات مترابطة'],
+                spssSteps: [
+                    'Analyze → Nonparametric Tests → Legacy Dialogs → K Related Samples',
+                    'Test Variables: اختر القياسات المتكررة',
+                    'Test Type: اختر Friedman',
+                    'Statistics: اختر Descriptive',
+                    'OK لعرض النتائج'
+                ],
+                excelSteps: [
+                    'غير متاح بسهولة في Excel',
+                    'يحتاج إلى خوارزمية معقدة',
+                    'ننصح باستخدام SPSS أو برنامج R'
+                ],
+                icon: 'fas fa-chart-area'
+            },
+
+            // --- اختبارات العلاقات ---
+            {
+                id: 'pearson',
+                name: 'معامل ارتباط بيرسون (Pearson Correlation)',
+                category: 'parametric',
+                type: 'association',
+                description: 'لقياس قوة العلاقة الخطية بين متغيرين كميين.',
+                conditions: ['بيانات كمية مستمرة', 'توزيع طبيعي', 'علاقة خطية'],
+                spssSteps: [
+                    'Analyze → Correlate → Bivariate',
+                    'Variables: اختر المتغيرين المراد دراستهما',
+                    'Correlation Coefficients: اختر Pearson',
+                    'Test of Significance: Two-tailed',
+                    'Flag significant correlations',
+                    'OK لعرض النتائج'
+                ],
+                excelSteps: [
+                    'استخدم الدالة: =CORREL(array1, array2)',
+                    'array1: بيانات المتغير الأول',
+                    'array2: بيانات المتغير الثاني',
+                    'النتيجة بين -1 و +1',
+                    '+1 علاقة طردية كاملة، -1 علاقة عكسية كاملة'
+                ],
+                icon: 'fas fa-project-diagram'
+            },
+            {
+                id: 'spearman',
+                name: 'معامل ارتباط سبيرمان (Spearman Correlation)',
+                category: 'non-parametric',
+                type: 'association',
+                description: 'لقياس العلاقة بين متغيرات رتبية أو كمية لا تتبع التوزيع الطبيعي.',
+                conditions: ['بيانات رتبية أو حرة التوزيع'],
+                spssSteps: [
+                    'Analyze → Correlate → Bivariate',
+                    'Variables: اختر المتغيرين المراد دراستهما',
+                    'Correlation Coefficients: اختر Spearman',
+                    'Test of Significance: Two-tailed',
+                    'OK لعرض النتائج'
+                ],
+                excelSteps: [
+                    '1. حول البيانات إلى رتب باستخدام RANK.AVG()',
+                    '2. احسب ارتباط بيرسون على الرتب',
+                    'أو استخدم الدالة: =CORREL(RANK.AVG(array1), RANK.AVG(array2))'
+                ],
+                icon: 'fas fa-bezier-curve'
+            },
+            {
+                id: 'chi-square',
+                name: 'اختبار مربع كاي (Chi-Square)',
+                category: 'non-parametric',
+                type: 'association',
+                description: 'لاختبار الاستقلالية بين متغيرين تصنيفيين (سميّة).',
+                conditions: ['بيانات أسمية/تصنيفية', 'الاستقلال المطلق', 'التكرار المتوقع > 5 في 80% من الخلايا'],
+                spssSteps: [
+                    'Analyze → Descriptive Statistics → Crosstabs',
+                    'Rows: المتغير الأول',
+                    'Columns: المتغير الثاني',
+                    'Statistics: اختر Chi-square',
+                    'Cells: اختر Expected و Percentages',
+                    'OK لعرض النتائج'
+                ],
+                excelSteps: [
+                    '1. أنشئ جدول التكرارات المتقاطعة',
+                    '2. استخدم الدالة: =CHISQ.TEST(actual_range, expected_range)',
+                    'actual_range: التكرارات الملاحظة',
+                    'expected_range: التكرارات المتوقعة',
+                    'النتيجة < 0.05 تعني وجود علاقة'
+                ],
+                icon: 'fas fa-border-all'
+            },
+            {
+                id: 'linear-regression',
+                name: 'الانحدار الخطي البسيط (Simple Linear Regression)',
+                category: 'parametric',
+                type: 'prediction',
+                description: 'للتنبؤ بقيمة متغير تابع بناءً على متغير مستقل.',
+                conditions: ['بيانات كمية', 'علاقة خطية', 'ثبات التباين', 'عدم وجود ارتباط ذاتي'],
+                spssSteps: [
+                    'Analyze → Regression → Linear',
+                    'Dependent: المتغير التابع',
+                    'Independent(s): المتغير المستقل',
+                    'Method: Enter',
+                    'Statistics: اختر Model fit و Estimates',
+                    'OK لعرض النتائج'
+                ],
+                excelSteps: [
+                    'Data → Data Analysis → Regression',
+                    'Y Range: المتغير التابع',
+                    'X Range: المتغير المستقل',
+                    'Labels: إذا كانت هناك عناوين',
+                    'Confidence Level: 95%',
+                    'Output Range: حدد مكان النتائج',
+                    'OK لعرض النتائج'
+                ],
+                icon: 'fas fa-chart-line'
             }
         ];
 
-        // Initialize page
+        // تهيئة الصفحة
         document.addEventListener('DOMContentLoaded', function() {
             initStatisticalWizard();
             initTestDatabase();
             initScrollAnimations();
         });
 
+        // معالج الاختبارات الإحصائية
         function initStatisticalWizard() {
             const wizard = {
                 currentStep: 1,
-                totalSteps: 5,
+                totalSteps: 6,
                 answers: {},
                 
                 init() {
@@ -1091,49 +1237,56 @@
                 },
                 
                 setupEventListeners() {
-                    // Option card selection
+                    // اختيار البطاقات
                     document.addEventListener('click', (e) => {
                         if (e.target.closest('.option-card')) {
                             this.selectOption(e.target.closest('.option-card'));
                         }
                     });
                     
-                    // Navigation buttons
+                    // أزرار التنقل
                     document.getElementById('next-btn').addEventListener('click', () => this.nextStep());
                     document.getElementById('prev-btn').addEventListener('click', () => this.prevStep());
                     document.getElementById('finish-btn').addEventListener('click', () => this.finish());
                 },
                 
                 selectOption(card) {
-                    // Remove selection from siblings
+                    // إزالة التحديد من البطاقات الأخرى
                     const siblings = card.parentNode.querySelectorAll('.option-card');
                     siblings.forEach(sibling => sibling.classList.remove('selected'));
                     
-                    // Select current card
+                    // تحديد البطاقة الحالية
                     card.classList.add('selected');
                     
-                    // Store answer
+                    // حفظ الإجابة
                     const stepId = card.closest('.wizard-step').id;
                     const stepNumber = stepId.split('-')[1];
                     this.answers[`step${stepNumber}`] = card.dataset.value;
                 },
                 
                 showStep(step) {
-                    // Hide all steps
+                    // تخطي خطوة التصميم إذا كان الاختيار علاقة
+                    if (step === 2 && this.answers.step1 === 'correlation') {
+                        this.answers.step2 = 'not-applicable';
+                        this.nextStep();
+                        return;
+                    }
+                    
+                    // إخفاء جميع الخطوات
                     document.querySelectorAll('.wizard-step').forEach(stepEl => {
                         stepEl.classList.remove('active');
                     });
                     
-                    // Show current step
+                    // إظهار الخطوة الحالية
                     document.getElementById(`step-${step}`).classList.add('active');
                     
-                    // Update progress
+                    // تحديث شريط التقدم
                     const progress = (step / this.totalSteps) * 100;
                     const progressBar = document.querySelector('.progress-bar');
                     progressBar.style.width = `${progress}%`;
                     progressBar.textContent = `الخطوة ${step} من ${this.totalSteps}`;
                     
-                    // Update navigation
+                    // تحديث أزرار التنقل
                     const prevBtn = document.getElementById('prev-btn');
                     const nextBtn = document.getElementById('next-btn');
                     const finishBtn = document.getElementById('finish-btn');
@@ -1153,17 +1306,36 @@
                 
                 nextStep() {
                     if (this.currentStep < this.totalSteps) {
+                        // التحقق من إجابة الخطوة الحالية
+                        const currentStepEl = document.getElementById(`step-${this.currentStep}`);
+                        const selected = currentStepEl.querySelector('.option-card.selected');
+                        if (!selected) {
+                            alert('يرجى اختيار إجابة قبل المتابعة');
+                            return;
+                        }
                         this.showStep(this.currentStep + 1);
                     }
                 },
                 
                 prevStep() {
                     if (this.currentStep > 1) {
+                        // إذا عدنا للخطوة 2 وكانت الإجابة "علاقة" في الخطوة 1، تخطي للخطوة 3
+                        if (this.currentStep === 3 && this.answers.step1 === 'correlation') {
+                            this.showStep(1);
+                            return;
+                        }
                         this.showStep(this.currentStep - 1);
                     }
                 },
                 
                 finish() {
+                    const currentStepEl = document.getElementById(`step-${this.currentStep}`);
+                    const selected = currentStepEl.querySelector('.option-card.selected');
+                    if (!selected) {
+                        alert('يرجى اختيار إجابة قبل إنهاء المعالج');
+                        return;
+                    }
+                    
                     const recommendations = this.generateRecommendations();
                     this.showResults(recommendations);
                 },
@@ -1172,65 +1344,124 @@
                     const answers = this.answers;
                     const recommendations = [];
                     
-                    // Simple recommendation logic based on answers
-                    if (answers.step1 === 'two-groups' && answers.step2 === 'continuous') {
-                        if (answers.step4 === 'normal') {
-                            recommendations.push(statisticalTests.find(test => test.id === 't-test'));
+                    console.log('الإجابات:', answers);
+                    
+                    // 1. مسار العلاقات والارتباط (Association)
+                    if (answers.step1 === 'correlation' || answers.step6 === 'association') {
+                        if (answers.step3 === 'categorical') {
+                            recommendations.push(statisticalTests.find(t => t.id === 'chi-square'));
+                        } else if (answers.step3 === 'ordinal' || answers.step5 === 'non-normal') {
+                            recommendations.push(statisticalTests.find(t => t.id === 'spearman'));
                         } else {
-                            recommendations.push(statisticalTests.find(test => test.id === 'mann-whitney'));
+                            recommendations.push(statisticalTests.find(t => t.id === 'pearson'));
                         }
                     }
                     
-                    if (answers.step1 === 'three-plus-groups') {
-                        recommendations.push(statisticalTests.find(test => test.id === 'anova'));
+                    // 2. مسار التنبؤ (Prediction)
+                    else if (answers.step6 === 'prediction') {
+                        recommendations.push(statisticalTests.find(t => t.id === 'linear-regression'));
                     }
                     
-                    if (answers.step1 === 'correlation' || answers.step5 === 'association') {
-                        recommendations.push(statisticalTests.find(test => test.id === 'correlation'));
-                        recommendations.push(statisticalTests.find(test => test.id === 'regression'));
+                    // 3. مسار المقارنات (Comparison)
+                    else {
+                        // أ) مقارنة مجموعتين (2 Groups)
+                        if (answers.step1 === 'two-groups') {
+                            if (answers.step2 === 'paired') { 
+                                // عينات مترابطة
+                                if (answers.step3 === 'continuous' && answers.step5 === 'normal') {
+                                    recommendations.push(statisticalTests.find(t => t.id === 't-test-paired'));
+                                } else {
+                                    recommendations.push(statisticalTests.find(t => t.id === 'wilcoxon'));
+                                }
+                            } else { 
+                                // عينات مستقلة
+                                if (answers.step3 === 'categorical') {
+                                     recommendations.push(statisticalTests.find(t => t.id === 'chi-square'));
+                                }
+                                else if (answers.step3 === 'continuous' && answers.step5 === 'normal') {
+                                    recommendations.push(statisticalTests.find(t => t.id === 't-test-indep'));
+                                } else {
+                                    recommendations.push(statisticalTests.find(t => t.id === 'mann-whitney'));
+                                }
+                            }
+                        }
+                        
+                        // ب) مقارنة 3 مجموعات فأكثر (3+ Groups)
+                        else if (answers.step1 === 'three-plus-groups') {
+                            if (answers.step2 === 'paired') {
+                                if (answers.step5 === 'normal') {
+                                    recommendations.push(statisticalTests.find(t => t.id === 'repeated-anova'));
+                                } else {
+                                    recommendations.push(statisticalTests.find(t => t.id === 'friedman'));
+                                }
+                            } else {
+                                // عينات مستقلة
+                                if (answers.step3 === 'continuous' && answers.step5 === 'normal') {
+                                    recommendations.push(statisticalTests.find(t => t.id === 'anova'));
+                                } else {
+                                    recommendations.push(statisticalTests.find(t => t.id === 'kruskal-wallis'));
+                                }
+                            }
+                        }
                     }
                     
-                    if (answers.step2 === 'categorical') {
-                        recommendations.push(statisticalTests.find(test => test.id === 'chi-square'));
-                    }
-                    
-                    // Default recommendations if no specific match
+                    // إذا لم نجد توصيات، نعطي توصية عامة
                     if (recommendations.length === 0) {
-                        recommendations.push(
-                            statisticalTests.find(test => test.id === 't-test'),
-                            statisticalTests.find(test => test.id === 'anova'),
-                            statisticalTests.find(test => test.id === 'correlation')
-                        );
+                        recommendations.push({
+                            id: 'consultation',
+                            name: 'استشارة إحصائية متخصصة',
+                            description: 'حالتك البحثية تتطلب تحليلاً متخصصاً. يرجى التواصل مع مستشار إحصائي.',
+                            spssSteps: ['تواصل مع مستشار إحصائي عبر صفحة الدعم'],
+                            excelSteps: ['تواصل مع مستشار إحصائي عبر صفحة الدعم'],
+                            conditions: [],
+                            icon: 'fas fa-user-md'
+                        });
                     }
                     
-                    return recommendations.filter(Boolean);
+                    return recommendations.filter(test => test !== undefined);
                 },
                 
                 showResults(recommendations) {
                     const resultsContainer = document.getElementById('recommended-tests');
                     resultsContainer.innerHTML = '';
                     
-                    recommendations.forEach(test => {
-                        const testElement = document.createElement('div');
-                        testElement.className = 'recommended-test';
-                        testElement.innerHTML = `
-                            <h4>${test.name}</h4>
-                            <p>${test.description}</p>
-                            <div class="test-actions">
-                                <button class="btn-tutorial" onclick="showTutorial('${test.id}')">
-                                    دليل التطبيق
-                                </button>
-                                <button class="btn-example" onclick="showExample('${test.id}')">
-                                    مثال تطبيقي
-                                </button>
+                    if (recommendations.length === 0) {
+                        resultsContainer.innerHTML = `
+                            <div class="alert alert-warning text-center">
+                                <h4>لم نتمكن من تحديد اختبار مناسب</h4>
+                                <p>يرجى مراجعة إجاباتك أو التواصل مع مستشار إحصائي</p>
                             </div>
                         `;
-                        resultsContainer.appendChild(testElement);
-                    });
+                    } else {
+                        recommendations.forEach(test => {
+                            const testElement = document.createElement('div');
+                            testElement.className = 'recommended-test';
+                            testElement.innerHTML = `
+                                <h4>${test.name}</h4>
+                                <p><strong>الوصف:</strong> ${test.description}</p>
+                                <div style="margin-top: 1rem;">
+                                    <strong>شروط الاستخدام:</strong>
+                                    <ul style="margin-top: 0.5rem;">
+                                        ${test.conditions.map(condition => `<li>${condition}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div class="test-actions" style="margin-top: 1.5rem;">
+                                    <button class="btn-tutorial" onclick="showTutorial('${test.id}')">
+                                        دليل التطبيق
+                                    </button>
+                                    <button class="btn-example" onclick="showExample('${test.id}')">
+                                        مثال تطبيقي
+                                    </button>
+                                </div>
+                            `;
+                            resultsContainer.appendChild(testElement);
+                        });
+                    }
                     
                     document.getElementById('wizard-results').style.display = 'block';
                     document.getElementById('wizard-results').scrollIntoView({ 
-                        behavior: 'smooth' 
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             };
@@ -1238,6 +1469,7 @@
             wizard.init();
         }
 
+        // قاعدة بيانات الاختبارات
         function initTestDatabase() {
             const testGrid = document.getElementById('tests-grid');
             const searchInput = document.getElementById('test-search');
@@ -1245,10 +1477,10 @@
             
             let filteredTests = [...statisticalTests];
             
-            // Render all tests initially
+            // عرض جميع الاختبارات في البداية
             renderTests(statisticalTests);
             
-            // Search functionality
+            // وظيفة البحث
             searchInput.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 filteredTests = statisticalTests.filter(test => 
@@ -1258,10 +1490,10 @@
                 renderTests(filteredTests);
             });
             
-            // Filter functionality
+            // وظيفة التصفية
             filterChips.forEach(chip => {
                 chip.addEventListener('click', () => {
-                    // Update active chip
+                    // تحديث الشريط النشط
                     filterChips.forEach(c => c.classList.remove('active'));
                     chip.classList.add('active');
                     
@@ -1310,7 +1542,7 @@
                     testGrid.appendChild(testCard);
                 });
                 
-                // Trigger animation
+                // تفعيل التحريك
                 setTimeout(() => {
                     document.querySelectorAll('.test-card').forEach(card => {
                         card.classList.add('visible');
@@ -1319,6 +1551,7 @@
             }
         }
 
+        // عرض دليل التطبيق
         function showTutorial(testId) {
             const test = statisticalTests.find(t => t.id === testId);
             if (!test) return;
@@ -1351,31 +1584,50 @@
             modal.style.display = 'block';
         }
 
+        // عرض مثال تطبيقي
         function showExample(testId) {
             const examples = {
-                't-test': {
-                    title: 'مثال اختبار T',
-                    description: 'دراسة تريد مقارنة التحصيل الدراسي بين طلاب الذكور والإناث',
-                    data: 'مجموعة بيانات تحتوي على جنس الطالب ودرجته',
-                    interpretation: 'إذا كانت p-value < 0.05، فهناك فرق ذو دلالة بين الذكور والإناث'
+                't-test-indep': {
+                    title: 'مثال اختبار T للعينات المستقلة',
+                    description: 'دراسة تريد مقارنة متوسط درجات الذكور والإناث في اختبار الرياضيات.',
+                    data: 'مجموعة بيانات تحتوي على جنس الطالب ودرجته في الرياضيات',
+                    interpretation: 'إذا كانت p-value < 0.05، فهناك فرق ذو دلالة بين متوسطي درجات الذكور والإناث'
+                },
+                't-test-paired': {
+                    title: 'مثال اختبار T للعينات المترابطة',
+                    description: 'دراسة لقياس تأثير برنامج تدريبي على مهارات الموظفين.',
+                    data: 'قياس المهارات قبل التدريب وبعده لنفس الموظفين',
+                    interpretation: 'p-value < 0.05 يعني أن التدريب أحدث تحسناً ذا دلالة إحصائية'
+                },
+                'mann-whitney': {
+                    title: 'مثال اختبار مان-ويتني',
+                    description: 'مقارنة رضا العملاء بين فرعين لشركة (البيانات غير طبيعية التوزيع).',
+                    data: 'درجات الرضا (من 1-10) للعملاء في الفرع أ والفرع ب',
+                    interpretation: 'p-value < 0.05 يعني وجود فرق في مستوى الرضا بين الفرعين'
                 },
                 'anova': {
-                    title: 'مثال تحليل التباين',
-                    description: 'دراسة تريد مقارنة التحصيل بين ثلاث طرق تدريس مختلفة',
-                    data: 'مجموعة بيانات تحتوي على طريقة التدريس ودرجة التحصيل',
-                    interpretation: 'إذا كانت p-value < 0.05، فهناك فرق بين طرق التدريس المختلفة'
+                    title: 'مثال تحليل التباين (ANOVA)',
+                    description: 'دراسة تريد مقارنة فعالية 3 طرق تدريس مختلفة.',
+                    data: 'درجات الطلاب في 3 مجموعات (كل مجموعة تستخدم طريقة تدريس مختلفة)',
+                    interpretation: 'إذا كانت p-value < 0.05، فهناك فرق ذو دلالة بين طرق التدريس'
                 },
-                'correlation': {
-                    title: 'مثال معامل الارتباط',
-                    description: 'دراسة العلاقة بين عدد سنوات الخبرة والأداء الوظيفي',
-                    data: 'مجموعة بيانات تحتوي على سنوات الخبرة والأداء الوظيفي',
+                'pearson': {
+                    title: 'مثال ارتباط بيرسون',
+                    description: 'دراسة العلاقة بين عدد ساعات المذاكرة ومتوسط الدرجات.',
+                    data: 'ساعات المذاكرة اليومية ودرجات الطلاب النهائية',
                     interpretation: 'معامل ارتباط موجب وقيمة p < 0.05 يدل على علاقة موجبة ذات دلالة'
+                },
+                'chi-square': {
+                    title: 'مثال اختبار مربع كاي',
+                    description: 'دراسة العلاقة بين الجنس وتفضيل نوع معين من القهوة.',
+                    data: 'جدول تكرارات يظهر توزيع الذكور والإناث حسب نوع القهوة المفضل',
+                    interpretation: 'p-value < 0.05 يعني وجود علاقة بين الجنس وتفضيل نوع القهوة'
                 }
             };
             
             const example = examples[testId];
             if (!example) {
-                alert('المثال قيد التطوير');
+                alert('المثال التطبيقي قيد التطوير');
                 return;
             }
             
@@ -1403,10 +1655,12 @@
             modal.style.display = 'block';
         }
 
+        // إغلاق النافذة التعليمية
         function closeTutorial() {
             document.getElementById('tutorial-modal').style.display = 'none';
         }
 
+        // تحريك العناصر عند التمرير
         function initScrollAnimations() {
             const observerOptions = {
                 threshold: 0.1,
@@ -1426,7 +1680,7 @@
             });
         }
 
-        // Close modal when clicking outside
+        // إغلاق النافذة التعليمية عند النقر خارجها
         window.addEventListener('click', (e) => {
             const modal = document.getElementById('tutorial-modal');
             if (e.target === modal) {
